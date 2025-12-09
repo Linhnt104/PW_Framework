@@ -18,9 +18,9 @@ test('add candidate successfully', async ({ page }) => {
     await page.getByPlaceholder("Middle Name").fill("M");
     await page.getByPlaceholder("Last Name").fill("John");
     await page.locator("//label[text()='Vacancy']//parent::div//following-sibling::div[contains(.,'-- Select --')]").click();
-    await page.locator("//div[@role='option']//span[text()='Junior Account Assistant']").click();
+    await page.locator("//div[@role='option']//span[text()='Sales Representative']").click();
     await page.locator("//label[text()='Email']//parent::div//following-sibling::div//input").fill("johnSmith@gmail.com");
-    await page.locator("//label[text()='Contact Number']//parent::div//following-sibling::div//input").fill("029384923");
+    await page.locator("//label[text()='Contact Number']//parent::div//following-sibling::div//input").fill("029384923");//      --------------------------------------------
     const fileChooserPromise = page.waitForEvent('filechooser');
     await page.getByText("Browse").click();
     const fileChooser = await fileChooserPromise;
@@ -33,7 +33,7 @@ test('add candidate successfully', async ({ page }) => {
     await page.locator("//button[text()=' Save ']").click();
 
     // verify correctly data
-    
+
     await page.locator("//p[text()='Success']").isVisible();
     await expect(page.locator("//p[text()='Success']")).toHaveText("Success");
 })
