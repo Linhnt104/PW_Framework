@@ -1,13 +1,6 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
 
-test.beforeEach('Login successfully', async ({ page }) => {
-    await page.goto('https://opensource-demo.orangehrmlive.com/', { waitUntil: 'domcontentloaded' });
-    await page.getByPlaceholder("Username").fill("Admin");
-    await page.getByPlaceholder("Password").fill("admin123");
-    await page.locator("//button[@type='submit']").click();
-    await expect(page.locator("//h6[text()='Dashboard']")).toBeVisible();
-});
 
 
 test('add candidate successfully', async ({ page }) => {
@@ -27,13 +20,13 @@ test('add candidate successfully', async ({ page }) => {
     await fileChooser.setFiles(path.join(__dirname, 'BTKTS_K25DTCN166.pdf'));
     await page.getByPlaceholder("Enter comma seperated words...").fill("Test1 Test1");
     await page.getByPlaceholder("yyyy-dd-mm").click();
-    await page.locator("//div[@class='oxd-date-input-links']//div[text()='Today']").click();
+    await page.locator("//div[text()='Today']").click();
     await page.locator("//textarea[@placeholder='Type here']").fill("123");
-    await page.locator("//div[@class='oxd-checkbox-wrapper']//span").click();
+    await page.locator("//label[text()='Consent to keep data']//ancestor::div[contains(@class, 'save-candidate-page-grid-checkbox')]//span[contains(@class,'checkbox-input')]").click();
     await page.locator("//button[text()=' Save ']").click();
 
     // verify correctly data
-
-    await page.locator("//p[text()='Success']").isVisible();
-    await expect(page.locator("//p[text()='Success']")).toHaveText("Success");
+    
+    await page.waitForTimeout(5000);
+    await expect(page.locator("//p[text()='Success']")).toBeVisible();
 })
