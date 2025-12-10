@@ -1,28 +1,29 @@
-import { Page, expect } from '@playwright/test';
+import { Page, expect, Locator } from '@playwright/test';
 import path from 'path';
 
 export default class RecruitmentPage {
   readonly page: Page;
 
-    private recruitmentBtn = "getByText('Recruitment')";
+    private recruitmentBtn = "//span[text()='Recruitment']";
     private addBtn = "//button[contains(.,'Add')]";
-    private firstNameTextbox = "getByPlaceholder('First Name')";
-    private middleNameTextbox = "getByPlaceholder('Middle Name')";
-    private lastNameTextbox = "getByPlaceholder('Last Name')";
+    private firstNameTextbox = "//input[@name='firstName']";
+    private middleNameTextbox = "//input[@name='middleName']";
+    private lastNameTextbox = "//input[@name='lastName']";
     private selectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div[contains(.,'-- Select --')]";
     private vacancyOption = "//div[@role='option']//span[text()='Sales Representative']";
     private emailTextbox = "//label[text()='Email']//parent::div//following-sibling::div//input";
     private contactNum = "//label[text()='Contact Number']//parent::div//following-sibling::div//input";
-    private browseBtn = "getByText('Browse')";
-    private keyword = "getByPlaceholder('Enter comma seperated words...')";
-    private selectDateByApp = "getByPlaceholder('yyyy-dd-mm')";
+    private browseBtn = "//div[text()='Browse']";
+    private keyword = "//input[@placeholder='Enter comma seperated words...']";
+    private selectDateByApp = "//input[@placeholder='yyyy-dd-mm']";
     private selectDate = "//div[text()='Today']";
     private note = "//textarea[@placeholder='Type here']";
     private consentCheckbox = "//label[text()='Consent to keep data']//ancestor::div[contains(@class, 'save-candidate-page-grid-checkbox')]//span[contains(@class,'checkbox-input')]";
     private saveBtn = "//button[text()=' Save ']";
-    private successMess = "//p[text()='Success']";
+    private successMess: Locator;
   constructor(page: Page) {
     this.page = page;
+    this.successMess = this.page.locator("//p[text()='Success']");
   }
 
   async loginWithValidAccount(
@@ -37,6 +38,7 @@ export default class RecruitmentPage {
   ): Promise<RecruitmentPage> {
 
     // input data
+    await this.page.waitForTimeout(5000);
     await this.page.click(this.recruitmentBtn);
     await this.page.click(this.addBtn);
     await this.page.fill(this.firstNameTextbox, firstNameTextbox);
@@ -59,8 +61,8 @@ export default class RecruitmentPage {
 
 
     // verify correctly data
-    // await this.page.waitForTimeout(5000);
-    // await expect(this.successMess)
+    await this.page.waitForTimeout(5000);
+    await expect(this.successMess).toBeVisible();
   return new RecruitmentPage(this.page);
   }
 
