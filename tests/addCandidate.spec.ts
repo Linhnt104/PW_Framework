@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import path from 'path';
 import RecruitmentPage from '../pages/RecruitmentPage';
 import LoginPage from '../pages/LoginPage';
+import Recruitment_Candidate from '../data/Recruitment_Candidate.json'; 
 
 test.beforeEach('login_successfully', async ({page}) => {
     const loginPage = new LoginPage(page);
@@ -12,5 +12,5 @@ test.beforeEach('login_successfully', async ({page}) => {
 
 test('add candidate successfully', async ({ page }) => {
    const recruitmentPage = new RecruitmentPage(page);
-   recruitmentPage.loginWithValidAccount("Smith", "M", "John", "Senior QA Lead", "admin1@gmail.com", "02934893", "123", "234");
+   await recruitmentPage.addCandidateSuccessfully(Recruitment_Candidate.firstName);
 })

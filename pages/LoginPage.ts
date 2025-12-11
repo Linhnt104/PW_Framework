@@ -5,12 +5,13 @@ export default class LoginPage{
     private usernameTextbox = "//input[@name='username']";
     private passwordTextbox = "//input[@name='password']";
     private loginBtn = "//button[text()=' Login ']";
-    private dashboardLink: Locator;
 
     constructor(page: Page){
         this.page = page;
-        this.dashboardLink = this.page.locator("//h6[text()='Dashboard']");
+    }
 
+    private get dashboardLink(): Locator {
+    return this.page.locator("//h6[text()='Dashboard']");
     }
 
     async goToHomePage(): Promise<void>{
@@ -22,6 +23,5 @@ export default class LoginPage{
         await this.page.click(this.loginBtn);
         await expect(this.dashboardLink).toBeVisible();
     }
-
 
 }
