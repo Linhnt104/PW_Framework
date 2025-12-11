@@ -10,7 +10,7 @@ export default class RecruitmentPage {
     private middleNameTextbox = "//input[@name='middleName']";
     private lastNameTextbox = "//input[@name='lastName']";
     private selectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div[contains(.,'-- Select --')]";
-    private vacancyOption = "//div[@role='option']//span[text()='Sales Representative']";
+    private vacancyOption = "//span[text()='Sales Representative']";
     private emailTextbox = "//label[text()='Email']//parent::div//following-sibling::div//input";
     private contactNum = "//label[text()='Contact Number']//parent::div//following-sibling::div//input";
     private browseBtn = "//div[text()='Browse']";
@@ -20,17 +20,19 @@ export default class RecruitmentPage {
     private note = "//textarea[@placeholder='Type here']";
     private consentCheckbox = "//label[text()='Consent to keep data']//ancestor::div[contains(@class, 'save-candidate-page-grid-checkbox')]//span[contains(@class,'checkbox-input')]";
     private saveBtn = "//button[text()=' Save ']";
-    private successMess: Locator;
+    
   constructor(page: Page) {
     this.page = page;
-    this.successMess = this.page.locator("//p[text()='Success']");
   }
 
-  async loginWithValidAccount(
+  private get successMess(): Locator {
+    return this.page.locator("//p[text()='Success']");
+  }
+
+  async addCandidateSuccessfully(
     firstNameTextbox: string, 
     middleNameTextbox: string,
     lastNameTextbox: string,
-    vacancyOption: string,
     emailTextbox: string,
     contactNum: string,
     keyword: string,
@@ -45,7 +47,7 @@ export default class RecruitmentPage {
     await this.page.fill(this.middleNameTextbox, middleNameTextbox);
     await this.page.fill(this.lastNameTextbox, lastNameTextbox);
     await this.page.click(this.selectVacancy);
-    await this.page.fill(this.vacancyOption, vacancyOption);
+    await this.page.click(this.vacancyOption);
     await this.page.fill(this.emailTextbox, emailTextbox);
     await this.page.fill(this.contactNum, contactNum);
     const fileChooserPromise = this.page.waitForEvent('filechooser');
@@ -61,7 +63,6 @@ export default class RecruitmentPage {
 
 
     // verify correctly data
-    await this.page.waitForTimeout(5000);
     await expect(this.successMess).toBeVisible();
   return new RecruitmentPage(this.page);
   }
