@@ -4,11 +4,12 @@ import LoginPage from '../pages/LoginPage';
 import Recruitment_Candidate from '../data/Recruitment_Candidate.json'; 
 import Login from '../data/Login.json'; 
 import { candidateData } from '../test-mapping/Recruitment_Candidate_Data';
+import { userData } from '../test-mapping/Login_Data';
 
 test.beforeEach('login_successfully', async ({page}) => {
     const loginPage = new LoginPage(page);
     await loginPage.goToHomePage();
-    await loginPage.loginWithValidAccount(Login.validAccount.username, Login.validAccount.password);
+    await loginPage.loginWithValidAccount(userData);
     await page.waitForTimeout(5000);
 })
 
