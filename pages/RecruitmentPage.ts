@@ -1,5 +1,6 @@
 import { Page, expect, Locator } from '@playwright/test';
 import path from 'path';
+import { RecruitmentCandidateForm } from '../types/Recruitment_Candidate.types';
 
 export default class RecruitmentPage {
   readonly page: Page;
@@ -29,35 +30,28 @@ export default class RecruitmentPage {
     return this.page.locator("//p[text()='Success']");
   }
 
-  async addCandidateSuccessfully(
-    firstNameTextbox: string, 
-    middleNameTextbox: string,
-    lastNameTextbox: string,
-    emailTextbox: string,
-    contactNum: string,
-    keyword: string,
-    note: string
-  ): Promise<RecruitmentPage> {
 
+  async addCandidateSuccessfully(
+    recruitmentCandidateInfo: RecruitmentCandidateForm): Promise<RecruitmentPage> {
     // input data
     await this.page.waitForTimeout(5000);
     await this.page.click(this.recruitmentBtn);
     await this.page.click(this.addBtn);
-    await this.page.fill(this.firstNameTextbox, firstNameTextbox);
-    await this.page.fill(this.middleNameTextbox, middleNameTextbox);
-    await this.page.fill(this.lastNameTextbox, lastNameTextbox);
+    await this.page.fill(this.firstNameTextbox, recruitmentCandidateInfo.firstName);
+    await this.page.fill(this.middleNameTextbox, recruitmentCandidateInfo.middleName);
+    await this.page.fill(this.lastNameTextbox, recruitmentCandidateInfo.lastName);
     await this.page.click(this.selectVacancy);
     await this.page.click(this.vacancyOption);
-    await this.page.fill(this.emailTextbox, emailTextbox);
-    await this.page.fill(this.contactNum, contactNum);
+    await this.page.fill(this.emailTextbox, recruitmentCandidateInfo.email);
+    await this.page.fill(this.contactNum, recruitmentCandidateInfo.contactNumber);
     const fileChooserPromise = this.page.waitForEvent('filechooser');
     await this.page.click(this.browseBtn);
     const fileChooser = await fileChooserPromise;
     await fileChooser.setFiles(path.join(__dirname, 'BTKTS_K25DTCN166.pdf'));
-    await this.page.fill(this.keyword,keyword);
+    await this.page.fill(this.keyword, recruitmentCandidateInfo.keyword);
     await this.page.click(this.selectDateByApp);
     await this.page.click(this.selectDate);
-    await this.page.fill(this.note, note);
+    await this.page.fill(this.note, recruitmentCandidateInfo.note);
     await this.page.click(this.consentCheckbox);
     await this.page.click(this.saveBtn);
 
