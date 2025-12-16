@@ -2,9 +2,11 @@ import { Page, expect, Locator } from '@playwright/test';
 import path from 'path';
 import { RecruitmentCandidateForm } from '../types/Recruitment_Candidate.types';
 import { RecruitmentVacancyForm } from '../types/Recruitment_Vacancy.types';
-
+import '../BasePage';
+import { BasePage } from '../BasePage';
 export default class RecruitmentPage {
   readonly page: Page;
+  
 
   // add candidate 
     private recruitmentBtn = "//span[text()='Recruitment']";
@@ -83,7 +85,8 @@ export default class RecruitmentPage {
     await this.page.click(this.recruitmentBtn);
     await this.page.click(this.vacancyTab);
     await this.page.click(this.addVacancyBtn);
-    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${Math.floor(Math.random()*1000)+1}`);
+    const basePage = new BasePage(this.page);
+    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${basePage.randomData()}`);
     await this.page.click(this.selectJobTitle);
     await this.page.click(this.jobTitleOption);
     await this.page.fill(this.description, recruitmentVacancyInfo.description);
