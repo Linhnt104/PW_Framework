@@ -1,10 +1,11 @@
 import {Page, expect, Locator} from '@playwright/test';
 import { LoginForm } from '../types/Login.types';
+import { userInfo } from 'os';
 
 export default class LoginPage{
     readonly page: Page;
     private usernameTextbox = "//input[@name='username']";
-    private passwordTextbox = "//input[@name='password']";
+    private passwordTextbox = "//input[@name='password']"; 
     private loginBtn = "//button[text()=' Login ']";
 
     constructor(page: Page){
@@ -15,6 +16,16 @@ export default class LoginPage{
     return this.page.locator("//h6[text()='Dashboard']");
     }
 
+    private get invalidCredentials(): Locator{
+        return this.page.locator("//p[text()='Invalid credentials']");
+    }
+
+    private get requiredUsernameMess(): Locator{
+        return this.page.locator("//label[text()='Username']//parent::div//following-sibling::span[text()='Required']");
+    }
+    private get requiredPasswordMess(): Locator{
+        return this.page.locator("//label[text()='Password']//parent::div//following-sibling::span[text()='Required']");
+    }
     async goToHomePage(): Promise<void>{
         await this.page.goto("https://opensource-demo.orangehrmlive.com/", {waitUntil: 'domcontentloaded'});
     }
@@ -25,4 +36,46 @@ export default class LoginPage{
         await expect(this.dashboardLink).toBeVisible();
     }
 
+    async loginWithInvalidAccount(userInfo: LoginForm): Promise<void>{
+        await this.page.fill(this.usernameTextbox, userInfo.username);
+        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.invalidCredentials).toBeVisible();
+    }
+
+    async loginWithInvalidUsername(userInfo: LoginForm): Promise<void>{
+        await this.page.fill(this.usernameTextbox, userInfo.username);
+        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.invalidCredentials).toBeVisible();
+
+    }
+    async loginWithInvalidPassword(userInfo: LoginForm): Promise<void>{
+        await this.page.fill(this.usernameTextbox, userInfo.username);
+        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.invalidCredentials).toBeVisible();
+    }
+    async loginWithEmptyAcc(userInfo: LoginForm): Promise<void>{
+        await this.page.fill(this.usernameTextbox, userInfo.username);
+        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.requiredUsernameMess).toBeVisible();
+        await expect(this.requiredPasswordMess).toBeVisible();
+
+    }
+    async loginWithEmptyUsername(userInfo: LoginForm): Promise<void>{
+        await this.page.fill(this.usernameTextbox, userInfo.username);
+        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.requiredUsernameMess).toBeVisible();
+
+    }
+    async loginWithEmptyPassword(userInfo: LoginForm): Promise<void>{
+        await this.page.fill(this.usernameTextbox, userInfo.username);
+        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.requiredPasswordMess).toBeVisible();
+
+    }
 }
