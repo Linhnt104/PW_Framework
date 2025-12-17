@@ -1,6 +1,23 @@
 {
-    "vacancyName": "Vacancy ",
-    "description": "123",
-    "hiringManager": "a",
-    "numOfPosition": 3
+    "validVacancy":{
+        "vacancyName": "Vacancy ",
+        "description": "123",
+        "hiringManager": "a",
+        "numOfPosition": 3
+    },
+    "requiredFieldsVacancy":{
+        "vacancyName": "Vacancy ",
+        "hiringManager": "a"
+    },
+    "optionalFieldsVacancy":{
+        "description": "123",
+        "numOfPosition": 3
+    },
+    "emptyVacancy":{
+        "vacancyName": "",
+        "description": "",
+        "hiringManager": "",
+        "numOfPosition": ""
+    }
+    
 }
