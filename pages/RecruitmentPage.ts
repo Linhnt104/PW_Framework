@@ -3,10 +3,9 @@ import path from 'path';
 import { RecruitmentCandidateForm } from '../types/Recruitment_Candidate.types';
 import { RecruitmentVacancyForm, RecruitmentVacancyOptionalForm, RecruitmentVacancyRequiredForm } from '../types/Recruitment_Vacancy.types';
 import { BasePage } from '../common/BasePage';
-export default class RecruitmentPage {
+export default class RecruitmentPage extends BasePage {
   readonly page: Page;
   
-
   // add candidate 
     private recruitmentBtn = "//span[text()='Recruitment']";
     private addBtn = "//button[contains(.,'Add')]";
@@ -41,6 +40,7 @@ export default class RecruitmentPage {
 
     
   constructor(page: Page) {
+    super(page); // super để khi khởi tạo page object sẽ dùng tất cả những method từ thằng cha
     this.page = page;
   }
 
@@ -94,7 +94,7 @@ export default class RecruitmentPage {
     await this.page.click(this.vacancyTab);
     await this.page.click(this.addVacancyBtn);
     const basePage = new BasePage(this.page);
-    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${basePage.randomData()}`);
+    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${this.randomData()}`);
     await this.page.click(this.selectJobTitle);
     await this.page.click(this.jobTitleOption);
     await this.page.fill(this.description, recruitmentVacancyInfo.description);
