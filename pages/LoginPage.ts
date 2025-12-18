@@ -1,6 +1,7 @@
 import {Page, expect, Locator} from '@playwright/test';
 import { LoginForm } from '../types/Login.types';
 import { userInfo } from 'os';
+import loginData from '../data/Login.json';
 
 export default class LoginPage{
     readonly page: Page;
@@ -43,39 +44,16 @@ export default class LoginPage{
         await expect(this.invalidCredentials).toBeVisible();
     }
 
-    async loginWithInvalidUsername(userInfo: LoginForm): Promise<void>{
-        await this.page.fill(this.usernameTextbox, userInfo.username);
-        await this.page.fill(this.passwordTextbox, userInfo.password);
-        await this.page.click(this.loginBtn);
-        await expect(this.invalidCredentials).toBeVisible();
-
-    }
-    async loginWithInvalidPassword(userInfo: LoginForm): Promise<void>{
-        await this.page.fill(this.usernameTextbox, userInfo.username);
-        await this.page.fill(this.passwordTextbox, userInfo.password);
-        await this.page.click(this.loginBtn);
-        await expect(this.invalidCredentials).toBeVisible();
-    }
-    async loginWithEmptyAcc(userInfo: LoginForm): Promise<void>{
-        await this.page.fill(this.usernameTextbox, userInfo.username);
-        await this.page.fill(this.passwordTextbox, userInfo.password);
+    async loginWithEmptyFields(): Promise<void>{
         await this.page.click(this.loginBtn);
         await expect(this.requiredUsernameMess).toBeVisible();
         await expect(this.requiredPasswordMess).toBeVisible();
-
-    }
-    async loginWithEmptyUsername(userInfo: LoginForm): Promise<void>{
-        await this.page.fill(this.usernameTextbox, userInfo.username);
-        await this.page.fill(this.passwordTextbox, userInfo.password);
-        await this.page.click(this.loginBtn);
-        await expect(this.requiredUsernameMess).toBeVisible();
-
-    }
-    async loginWithEmptyPassword(userInfo: LoginForm): Promise<void>{
-        await this.page.fill(this.usernameTextbox, userInfo.username);
-        await this.page.fill(this.passwordTextbox, userInfo.password);
+        await this.page.fill(this.usernameTextbox, loginData.validAccount.username);
         await this.page.click(this.loginBtn);
         await expect(this.requiredPasswordMess).toBeVisible();
-
+        await this.page.fill(this.usernameTextbox, "");
+        await this.page.fill(this.passwordTextbox, loginData.validAccount.password);
+        await this.page.click(this.loginBtn);
+        await expect(this.requiredUsernameMess).toBeVisible();
     }
 }

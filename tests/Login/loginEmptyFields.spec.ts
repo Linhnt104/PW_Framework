@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../../pages/LoginPage';
-import {emptyPasswordData} from '../../test-mapping/Login_Data';
-test('login with empty password', async ({page}) => {
+import { emptyAccountData } from '../../test-mapping/Login_Data';
+test('login with empty account', async ({page}) => {
     const loginPage = new LoginPage(page);
     await loginPage.goToHomePage();
-    await loginPage.loginWithEmptyPassword(emptyPasswordData);
+    await loginPage.loginWithEmptyFields();
     await page.waitForTimeout(5000);
 })

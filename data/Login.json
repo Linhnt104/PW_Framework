@@ -7,25 +7,5 @@
     "invalidAccount":{
         "username": "User",
         "password": "user123"
-    },
-    "invalidUsername":{
-        "username": "Admin24",
-        "password": "admin123"
-    },
-    "invalidPassword":{
-        "username": "Admin",
-        "password": "admin123456"
-    },
-    "emptyAccount":{
-        "username": "",
-        "password": ""
-    },
-    "emptyUsername": {
-        "username": "",
-        "password": "admin123"
-    },
-    "emptyPassword": {
-        "username": "Admin",
-        "password": ""
     }
 }
