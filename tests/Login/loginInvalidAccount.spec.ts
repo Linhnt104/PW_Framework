@@ -5,5 +5,4 @@ test('login with invalid account', async ({page}) => {
     const loginPage = new LoginPage(page);
     await loginPage.goToHomePage();
     await loginPage.loginWithInvalidAccount(invalidAccountData);
-    await page.waitForTimeout(5000);
 })
