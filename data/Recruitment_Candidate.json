@@ -1,9 +1,17 @@
-{   
-    "firstName" : "Linh",
-    "middleName" : "Thi",
-    "lastName" : "Nguyen",
-    "email" : "linhnguyen123@gmail.com",
-    "contactNumber" : "0900 123 123",
-    "keyword": "23432",
-    "note" : "abc def"
+{  
+    "validCandidate": {
+        "firstName" : "Linh",
+        "middleName" : "Thi",
+        "lastName" : "Nguyen",
+        "email" : "linhnguyen123@gmail.com",
+        "contactNumber" : "0900 123 123",
+        "keyword": "23432",
+        "note" : "abc def"
+    },
+    "requiredFieldsCandidate": {
+        "firstName": "John",
+        "lastName": "Smith",
+        "email": "john@gmail.com"
+    }
+    
 }
