@@ -1,9 +1,12 @@
 import { Page, expect, Locator } from '@playwright/test';
 import path from 'path';
 import { RecruitmentCandidateForm } from '../types/Recruitment_Candidate.types';
-import { RecruitmentVacancyForm, RecruitmentVacancyOptionalForm, RecruitmentVacancyRequiredForm } from '../types/Recruitment_Vacancy.types';
-import { BasePage } from '../common/BasePage';
-export default class RecruitmentPage extends BasePage {
+import { RecruitmentVacancyForm } from '../types/Recruitment_Vacancy.types';
+import { BaseTest } from '../common/BaseTest';
+import requiredFieldsCandidateData from '../data/Recruitment_Candidate.json';
+import requiredFieldsVacancyData from '../data/Recruitment_Vacancy.json';
+
+export default class RecruitmentPage extends BaseTest {
   readonly page: Page;
   
   // add candidate 
@@ -60,11 +63,30 @@ export default class RecruitmentPage extends BasePage {
     return this.page.locator("//label[text()='Hiring Manager']//parent::div//following-sibling::span[text()='Required']");
   }
 
+  private get requiredMessFirstName(): Locator{
+    return this.page.locator("//input[@name='firstName']//parent::div//following-sibling::span[text()='Required']");
+  }
+  private get requiredMessLastName(): Locator{
+    return this.page.locator("//input[@name='lastName']//parent::div//following-sibling::span[text()='Required']");
+  }
+  private get requiredMessEmail(): Locator{
+    return this.page.locator("//label[text()='Email']//parent::div//following-sibling::span[text()='Required']");
+  }
+  private get applicationStageText(): Locator{
+    return this.page.locator("//h6[text()='Application Stage']");
+  }
+  async goToRecruitmentPage(): Promise<void>{
+    await this.page.click(this.recruitmentBtn);
+  }
+
   async addCandidateSuccessfully(
     recruitmentCandidateInfo: RecruitmentCandidateForm): Promise<RecruitmentPage> {
-    // input data
-    await this.page.click(this.recruitmentBtn);
     await this.page.click(this.addBtn);
+    // input optional fields for candidate form 
+    await this.page.click(this.saveBtn);
+    await expect(this.requiredMessFirstName).toBeVisible();
+    await expect(this.requiredMessLastName).toBeVisible();
+    await expect(this.requiredMessEmail).toBeVisible();
     await this.page.fill(this.firstNameTextbox, recruitmentCandidateInfo.firstName);
     await this.page.fill(this.middleNameTextbox, recruitmentCandidateInfo.middleName);
     await this.page.fill(this.lastNameTextbox, recruitmentCandidateInfo.lastName);
@@ -82,18 +104,32 @@ export default class RecruitmentPage extends BasePage {
     await this.page.fill(this.note, recruitmentCandidateInfo.note);
     await this.page.click(this.consentCheckbox);
     await this.page.click(this.saveBtn);
-
+    await this.page.waitForTimeout(5000);
 
     // verify correctly data
-    await expect(this.successMess).toBeVisible();
+    await expect(this.applicationStageText).toBeVisible();
   return new RecruitmentPage(this.page);
   }
 
+  async addRequiredFieldsCandidate(): Promise<void>{
+    await this.page.click(this.addBtn);
+    await this.page.fill(this.firstNameTextbox, requiredFieldsCandidateData.requiredFieldsCandidate.firstName);
+    await this.page.fill(this.lastNameTextbox, requiredFieldsCandidateData.requiredFieldsCandidate.lastName);
+    await this.page.fill(this.emailTextbox, requiredFieldsCandidateData.requiredFieldsCandidate.email);
+    await this.page.click(this.saveBtn);
+    // verify add candidate successfully
+    await expect(this.applicationStageText).toBeVisible();
+  }
+  
   async addVacancySuccessfully(recruitmentVacancyInfo: RecruitmentVacancyForm): Promise<RecruitmentPage>{
-    await this.page.click(this.recruitmentBtn);
     await this.page.click(this.vacancyTab);
     await this.page.click(this.addVacancyBtn);
-    const basePage = new BasePage(this.page);
+    // add optional fields for vacancy form 
+    await this.page.click(this.saveVacancyBtn);
+    await expect(this.requiredMessVacancyName).toBeVisible();
+    await expect(this.requiredMessJobTitle).toBeVisible();
+    await expect(this.requiredMessHiringManager).toBeVisible();
+    // add vacancy successfully
     await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${this.randomData()}`);
     await this.page.click(this.selectJobTitle);
     await this.page.click(this.jobTitleOption);
@@ -110,15 +146,13 @@ export default class RecruitmentPage extends BasePage {
   return new RecruitmentPage(this.page);
   }
 
-  async addVacancyWithRequiredFields(recruitmentVacancyInfo: RecruitmentVacancyRequiredForm): Promise<RecruitmentPage>{
-    await this.page.click(this.recruitmentBtn);
+  async addVacancyWithRequiredFields(): Promise<RecruitmentPage>{
     await this.page.click(this.vacancyTab);
     await this.page.click(this.addVacancyBtn);
-    const basePage = new BasePage(this.page);
-    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${basePage.randomData()}`);
+    await this.page.fill(this.vacancyName, `${requiredFieldsVacancyData.requiredFieldsVacancy.vacancyName} ${this.randomData()}`);
     await this.page.click(this.selectJobTitle);
     await this.page.click(this.jobTitleOption);
-    await this.page.fill(this.hiringManager, recruitmentVacancyInfo.hiringManager);
+    await this.page.fill(this.hiringManager, requiredFieldsVacancyData.requiredFieldsVacancy.hiringManager);
     await this.page.click(this.selectHiringResult);
     await this.page.click(this.triggerActive);
     await this.page.click(this.triggerPublish);
@@ -126,22 +160,6 @@ export default class RecruitmentPage extends BasePage {
 
     // verify successfully
     await expect(this.editVacancyText).toBeVisible();
-  return new RecruitmentPage(this.page);
-  }
-  async addVacancyWithOptionalFields(recruitmentVacancyInfo: RecruitmentVacancyOptionalForm): Promise<RecruitmentPage>{
-    await this.page.click(this.recruitmentBtn);
-    await this.page.click(this.vacancyTab);
-    await this.page.click(this.addVacancyBtn);
-    await this.page.fill(this.description, recruitmentVacancyInfo.description);
-    await this.page.fill(this.numOfPositions, recruitmentVacancyInfo.numOfPosition.toString());
-    await this.page.click(this.triggerActive);
-    await this.page.click(this.triggerPublish);
-    await this.page.click(this.saveVacancyBtn);
-
-    // verify successfully
-    await expect(this.requiredMessVacancyName).toBeVisible();
-    await expect(this.requiredMessJobTitle).toBeVisible();
-    await expect(this.requiredMessHiringManager).toBeVisible();
   return new RecruitmentPage(this.page);
   }
 }
