@@ -6,6 +6,7 @@ import { BaseTest } from '../common/BaseTest';
 import requiredFieldsCandidateData from '../data/Recruitment_Candidate.json';
 import requiredFieldsVacancyData from '../data/Recruitment_Vacancy.json';
 import searchCandidateData from '../data/Recruitment_SearchCandidate.json';
+import { RecruitmentSearchCandidateForm } from '../types/Recruitment_SearchCandidate.types';
 
 export default class RecruitmentPage extends BaseTest {
   readonly page: Page;
@@ -31,7 +32,7 @@ export default class RecruitmentPage extends BaseTest {
     private searchSelectJobTitle = "//label[text()='Job Title']//parent::div//following-sibling::div//div[text()='-- Select --']";
     private searchJobTitleOption = "//span[text()='Chief Executive Officer']";
     private searchSelectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div//div[text()='-- Select --']";
-    private searchVacancyOption = "//span[text()='Internship Developer']";
+    private searchVacancyOption = "//span[text()='Payroll Administrator']";
     private searchSelectHiringManager = "//label[text()='Hiring Manager']//parent::div//following-sibling::div//div[text()='-- Select --']";
     private searchHiringManagerOption = "//span[text()='Virat Kohli']";
     private searchSelectStatus = "//label[text()='Status']//parent::div//following-sibling::div//div[text()='-- Select --']";
@@ -163,40 +164,48 @@ export default class RecruitmentPage extends BaseTest {
   }
   
 
-  async searchCandidate(): Promise<void>{
+  async searchCandidate(searchCandidateInfo: RecruitmentSearchCandidateForm): Promise<void>{
     await this.page.click(this.searchSelectJobTitle);
-    await this.page.click(this.searchJobTitleOption);
+    await this.page.getByText(searchCandidateInfo.jobTitle).click();
     await this.page.click(this.searchSelectVacancy);
-    await this.page.click(this.searchVacancyOption);
+    await this.page.locator("span").filter({ hasText: searchCandidateInfo.vacancy }).click();
     await this.page.click(this.searchSelectHiringManager);
-    await this.page.click(this.searchHiringManagerOption);
+    await this.page.locator("//div[@role='option']//span").filter({ hasText: searchCandidateInfo.hiringManager }).click();
     await this.page.click(this.searchSelectStatus);
-    await this.page.click(this.searchStatusOption);
-    await this.page.fill(this.searchCandidateNameKey, searchCandidateData.candidateName);
-    await this.page.click(this.searchCandidateNameOption);
-    await this.page.fill(this.searchKeywords, searchCandidateData.keywords);
+    await this.page.locator("span").filter({ hasText: searchCandidateInfo.status }).click();
+    await this.page.fill(this.searchCandidateNameKey, searchCandidateInfo.candidateNameKey);
+    await this.page.locator("//div[@role='option']//span").filter({ hasText: searchCandidateInfo.candidateNameOption }).click();
+    await this.page.fill(this.searchKeywords, searchCandidateInfo.keywords);
     await this.page.click(this.searchSelectDateOfAppFrom);
-    await this.page.click(this.searchDateOfAppFromOption);
+    await this.page.getByText(searchCandidateInfo.dateOfAppFrom).click();
     await this.page.click(this.searchSelectDateOfAppTo);
-    await this.page.click(this.searchDateOfAppToOption);
+    await this.page.getByText(searchCandidateInfo.dateOfAppTo).click();
     await this.page.click(this.searchSelectMethodOfApp);
-    await this.page.click(this.searchMethodOfAppOption);
+    await this.page.getByText(searchCandidateInfo.methodOfApp).click();
     await this.page.click(this.searchCandidateBtn);
     // no record
     // await expect(this.noRecordsText).toBeVisible();
 
     // have record
-    await expect(this.multipleRecordsFoundText).toBeVisible();
+    // await expect(this.multipleRecordsFoundText).toBeVisible();
 
     // have data 
-    // const rows = await this.page.locator("//div[contains(@class,'oxd-table-row')]").all();
-    // console.log(typeof rows);
-    // for (const row of rows) {
-    // const cells = await row.locator("//div[contains(@class,'oxd-table-cell')]").allTextContents();
-    // const candidate = cells[3]?.toLowerCase();
-    // expect(candidate).toContain(searchCandidateData.candidateName.toLowerCase());
-
+    const rows = await this.page.locator("//div[contains(@class,'oxd-table-row')]").all();
+    console.log(typeof rows);
+    for (const row of rows) {
+    const cells = await row.locator("//div[contains(@class,'oxd-table-cell')]").allTextContents();
+    // const vacancy = cells[2]?.toLowerCase();
+    const candidate = cells[3]?.toLowerCase();
+    const hiringManager = cells[4]?.toLowerCase();
+    const dateOfApp = cells[5]?.toLowerCase();
+    const status = cells[6]?.toLowerCase();
+    // expect(vacancy).toContain(searchCandidateData.vacancy.toLowerCase());
+    expect(candidate).toContain(searchCandidateData.candidateNameOption.toLowerCase());
+    expect(hiringManager).toContain(searchCandidateData.hiringManager.toLowerCase());
+    expect(dateOfApp).toContain(searchCandidateData.dateOfAppFrom.toLowerCase());
+    expect(status).toContain(searchCandidateData.status.toLowerCase());
   }
+}
 
 
   async addVacancySuccessfully(recruitmentVacancyInfo: RecruitmentVacancyForm): Promise<RecruitmentPage>{
