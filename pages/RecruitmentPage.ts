@@ -5,6 +5,8 @@ import { RecruitmentVacancyForm } from '../types/Recruitment_Vacancy.types';
 import { BaseTest } from '../common/BaseTest';
 import requiredFieldsCandidateData from '../data/Recruitment_Candidate.json';
 import requiredFieldsVacancyData from '../data/Recruitment_Vacancy.json';
+import searchCandidateData from '../data/Recruitment_SearchCandidate.json';
+import { RecruitmentSearchCandidateForm } from '../types/Recruitment_SearchCandidate.types';
 
 export default class RecruitmentPage extends BaseTest {
   readonly page: Page;
@@ -26,6 +28,25 @@ export default class RecruitmentPage extends BaseTest {
     private note = "//textarea[@placeholder='Type here']";
     private consentCheckbox = "//label[text()='Consent to keep data']//ancestor::div[contains(@class, 'save-candidate-page-grid-checkbox')]//span[contains(@class,'checkbox-input')]";
     private saveBtn = "//button[text()=' Save ']";
+  // search candidate
+    private searchSelectJobTitle = "//label[text()='Job Title']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchJobTitleOption = "//span[text()='Chief Executive Officer']";
+    private searchSelectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchVacancyOption = "//span[text()='Payroll Administrator']";
+    private searchSelectHiringManager = "//label[text()='Hiring Manager']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchHiringManagerOption = "//span[text()='Virat Kohli']";
+    private searchSelectStatus = "//label[text()='Status']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchStatusOption = "//span[text()='Application Initiated']";
+    private searchCandidateNameKey = "//input[@placeholder='Type for hints...']";
+    private searchCandidateNameOption = "(//span[text()='John  Doe'])[1]";
+    private searchKeywords = "//input[@placeholder='Enter comma seperated words...']";
+    private searchSelectDateOfAppFrom = "//input[@placeholder='From']";
+    private searchDateOfAppFromOption = "//div[text()='17']";
+    private searchSelectDateOfAppTo = "//input[@placeholder='To']";
+    private searchDateOfAppToOption = "//div[text()='20']";
+    private searchSelectMethodOfApp = "//label[text()='Method of Application']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchMethodOfAppOption = "//span[text()='Manual']";
+    private searchCandidateBtn = "//button[text()=' Search ']";
 
   // add vacancy
     private vacancyTab = "//a[text()='Vacancies']";
@@ -41,7 +62,15 @@ export default class RecruitmentPage extends BaseTest {
     private triggerPublish = "//p[contains(.,'Publish')]//parent::div//span[contains(@class,'oxd-switch-input')]";
     private saveVacancyBtn = "//button[text()=' Save ']";
 
-    
+    // search vacancy
+    private searchVSelectJobTitle = "//label[text()='Job Title']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchVJobTitleOption = "//span[text()='Chief Technical Officer']";
+    private searchVSelectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchVVacancyOption = "//span[text()='Internship Developer']";
+    private searchVSelectHiringManager = "//label[text()='Hiring Manager']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchVHiringManagerOption = "//span[text()='Virat Kohli']";
+    private searchVSelectStatus = "//label[text()='Status']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private searchVStatusOption = "//span[text()='Active']";
   constructor(page: Page) {
     super(page); // super để khi khởi tạo page object sẽ dùng tất cả những method từ thằng cha
     this.page = page;
@@ -75,6 +104,19 @@ export default class RecruitmentPage extends BaseTest {
   private get applicationStageText(): Locator{
     return this.page.locator("//h6[text()='Application Stage']");
   }
+
+  private get noRecordsText(): Locator{
+    return this.page.locator("//span[text()='No Records Found']");
+  }
+  private get multipleRecordsFoundText(): Locator{
+    return this.page.locator("//span[contains(.,' Records Found')]");
+  }
+  private get singleRecordFoundText(): Locator{
+    return this.page.locator("//span[contains(.,' Record Found')]");
+  }
+
+
+  // test scrips
   async goToRecruitmentPage(): Promise<void>{
     await this.page.click(this.recruitmentBtn);
   }
@@ -121,6 +163,51 @@ export default class RecruitmentPage extends BaseTest {
     await expect(this.applicationStageText).toBeVisible();
   }
   
+
+  async searchCandidate(searchCandidateInfo: RecruitmentSearchCandidateForm): Promise<void>{
+    await this.page.click(this.searchSelectJobTitle);
+    await this.page.getByText(searchCandidateInfo.jobTitle).click();
+    await this.page.click(this.searchSelectVacancy);
+    await this.page.locator("span").filter({ hasText: searchCandidateInfo.vacancy }).click();
+    await this.page.click(this.searchSelectHiringManager);
+    await this.page.locator("//div[@role='option']//span").filter({ hasText: searchCandidateInfo.hiringManager }).click();
+    await this.page.click(this.searchSelectStatus);
+    await this.page.locator("span").filter({ hasText: searchCandidateInfo.status }).click();
+    await this.page.fill(this.searchCandidateNameKey, searchCandidateInfo.candidateNameKey);
+    await this.page.locator("//div[@role='option']//span").filter({ hasText: searchCandidateInfo.candidateNameOption }).click();
+    await this.page.fill(this.searchKeywords, searchCandidateInfo.keywords);
+    await this.page.click(this.searchSelectDateOfAppFrom);
+    await this.page.getByText(searchCandidateInfo.dateOfAppFrom).click();
+    await this.page.click(this.searchSelectDateOfAppTo);
+    await this.page.getByText(searchCandidateInfo.dateOfAppTo).click();
+    await this.page.click(this.searchSelectMethodOfApp);
+    await this.page.getByText(searchCandidateInfo.methodOfApp).click();
+    await this.page.click(this.searchCandidateBtn);
+    // no record
+    // await expect(this.noRecordsText).toBeVisible();
+
+    // have record
+    // await expect(this.multipleRecordsFoundText).toBeVisible();
+
+    // have data 
+    const rows = await this.page.locator("//div[contains(@class,'oxd-table-row')]").all();
+    console.log(typeof rows);
+    for (const row of rows) {
+    const cells = await row.locator("//div[contains(@class,'oxd-table-cell')]").allTextContents();
+    // const vacancy = cells[2]?.toLowerCase();
+    const candidate = cells[3]?.toLowerCase();
+    const hiringManager = cells[4]?.toLowerCase();
+    const dateOfApp = cells[5]?.toLowerCase();
+    const status = cells[6]?.toLowerCase();
+    // expect(vacancy).toContain(searchCandidateData.vacancy.toLowerCase());
+    expect(candidate).toContain(searchCandidateData.candidateNameOption.toLowerCase());
+    expect(hiringManager).toContain(searchCandidateData.hiringManager.toLowerCase());
+    expect(dateOfApp).toContain(searchCandidateData.dateOfAppFrom.toLowerCase());
+    expect(status).toContain(searchCandidateData.status.toLowerCase());
+  }
+}
+
+
   async addVacancySuccessfully(recruitmentVacancyInfo: RecruitmentVacancyForm): Promise<RecruitmentPage>{
     await this.page.click(this.vacancyTab);
     await this.page.click(this.addVacancyBtn);
@@ -161,5 +248,19 @@ export default class RecruitmentPage extends BaseTest {
     // verify successfully
     await expect(this.editVacancyText).toBeVisible();
   return new RecruitmentPage(this.page);
+  }
+
+  async searchVacancy(): Promise<void>{
+    await this.page.click(this.vacancyTab);
+    await this.page.click(this.searchVSelectJobTitle);
+    await this.page.click(this.searchVJobTitleOption);
+    await this.page.click(this.searchVSelectVacancy);
+    await this.page.click(this.searchVVacancyOption);
+    await this.page.click(this.searchVSelectHiringManager);
+    await this.page.click(this.searchVHiringManagerOption);
+    await this.page.click(this.searchVSelectStatus);
+    await this.page.click(this.searchVStatusOption);
+    await this.page.click(this.searchCandidateBtn);
+    await expect(this.singleRecordFoundText).toBeVisible();
   }
 }
