@@ -118,6 +118,7 @@ export default class RecruitmentPage extends BaseTest {
 
   // test scrips
   async goToRecruitmentPage(): Promise<void>{
+    await expect(this.page.locator(this.recruitmentBtn)).toBeVisible();
     await this.page.click(this.recruitmentBtn);
   }
 
