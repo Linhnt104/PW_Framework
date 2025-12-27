@@ -1,4 +1,15 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+<<<<<<< HEAD
+"","35096","login with invalid account","chromium","2025-12-20","broken","2025-12-20","","Login\loginInvalidAccount.spec.ts","",""
+"","35044","get started link","chromium","2025-12-20","broken","2025-12-20","","example.spec.ts","",""
+"","30064","login_successfully","chromium","2025-12-20","broken","2025-12-20","","Login\loginValidAccount.spec.ts","",""
+"","35089","has title","chromium","2025-12-20","broken","2025-12-20","","example.spec.ts","",""
+"","30118","add vacancy with required fields","chromium","2025-12-20","broken","2025-12-20","","Vacancy\addValidVacancy.spec.ts","",""
+"","35092","add vacancy successfully","chromium","2025-12-20","broken","2025-12-20","","Vacancy\addRequiredFieldsVacancy.spec.ts","",""
+"","35043","add vacancy with optional fields","chromium","2025-12-20","broken","2025-12-20","","Vacancy\addOptionalFieldsVacancy.spec.ts","",""
+"","30105","add candidate successfully","chromium","2025-12-20","broken","2025-12-20","","addCandidate.spec.ts","",""
+"","30133","login with empty account","chromium","2025-12-20","broken","2025-12-20","","Login\loginEmptyFields.spec.ts","",""
+=======
 "","24517","add candidate with optional fields and full fields successfully","chromium","2025-12-20","passed","2025-12-20","","Recruitment\addValidCandidate.spec.ts","",""
 "","17645","add vacancy with required fields","chromium","2025-12-18","passed","2025-12-18","","Vacancy/addValidVacancy.spec.ts","",""
 "","18433","add vacancy with optional fields and full fields successfully","chromium","2025-12-19","passed","2025-12-19","","Vacancy\addValidVacancy.spec.ts","",""
@@ -12,3 +23,4 @@
 "","15600","login with empty account","chromium","2025-12-20","passed","2025-12-20","","Login\loginEmptyFields.spec.ts","",""
 "","18115","login with invalid account","chromium","2025-12-20","passed","2025-12-20","","Login\loginInvalidAccount.spec.ts","",""
 "","30069","has title","chromium","2025-12-20","broken","2025-12-20","","example.spec.ts","",""
+>>>>>>> 9ea39e8514d6a155429b2779c4f1f84fce8c751e
