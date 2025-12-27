@@ -1,0 +1,77 @@
+linh-add-tcs-search-candidate-single-field
+
+# Conflicts:
+#	allure-report/data/categories.json
+#	allure-report/data/suites.json
+#	allure-report/data/timeline.json
+#	allure-report/history/categories-trend.json
+#	allure-report/history/duration-trend.json
+#	allure-report/history/history-trend.json
+#	allure-report/history/history.json
+#	allure-report/history/retry-trend.json
+#	allure-report/widgets/duration-trend.json
+#	allure-report/widgets/duration.json
+#	allure-report/widgets/severity.json
+#	allure-report/widgets/suites.json
+#	allure-report/widgets/summary.json
+#	data/Recruitment_SearchCandidate.json
+#	pages/RecruitmentPage.ts
+#	test-mapping/Recruitment_SearchCandidate_Data.ts
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# interactive rebase in progress; onto 9ea39e8
+# Last commands done (2 commands done):
+#    pick e4999ea nothing
+#    pick a00d307 linh-add-tcs-search-candidate-single-field
+# No commands remaining.
+# You are currently rebasing branch 'search-candidate-single-field' on '9ea39e8'.
+#
+# Changes to be committed:
+#	modified:   allure-report/data/behaviors.csv
+#	modified:   allure-report/data/behaviors.json
+#	modified:   allure-report/data/categories.csv
+#	modified:   allure-report/data/categories.json
+#	modified:   allure-report/data/packages.json
+#	modified:   allure-report/data/suites.csv
+#	modified:   allure-report/data/suites.json
+#	modified:   allure-report/data/timeline.json
+#	modified:   allure-report/export/influxDbData.txt
+#	modified:   allure-report/export/prometheusData.txt
+#	modified:   allure-report/history/categories-trend.json
+#	modified:   allure-report/history/duration-trend.json
+#	modified:   allure-report/history/history-trend.json
+#	modified:   allure-report/history/history.json
+#	modified:   allure-report/history/retry-trend.json
+#	modified:   allure-report/index.html
+#	modified:   allure-report/widgets/duration-trend.json
+#	modified:   allure-report/widgets/duration.json
+#	modified:   allure-report/widgets/severity.json
+#	modified:   allure-report/widgets/suites.json
+#	modified:   allure-report/widgets/summary.json
+#	deleted:    allure-results/2f0b9462-8000-431e-a09f-51cb69a987f0-result.json
+#	deleted:    allure-results/3315957b-b496-49b8-a120-8825e1617736-result.json
+#	deleted:    allure-results/3ac2ef26-f0ef-4616-8413-3fa388322aad-result.json
+#	deleted:    allure-results/43deea5c-e131-48e1-aa71-961f958fcdf8-result.json
+#	deleted:    allure-results/5398358f-0410-4191-b30b-7262d67b16d5-result.json
+#	deleted:    allure-results/62d5d7ae-59f7-406c-aab1-6bef8d8e7b6e-result.json
+#	deleted:    allure-results/709ac4e8-8496-46c2-8a55-64da760d8cc7-attachment.md
+#	deleted:    allure-results/744dc936-3523-4775-9a80-01709fd69397-result.json
+#	deleted:    allure-results/761c0e9a-a15d-4bb4-949f-815be3f54669-result.json
+#	deleted:    allure-results/93a85242-2808-429d-a940-fd47919640ea-result.json
+#	deleted:    allure-results/9a31efb0-188e-4601-b518-dae8b4d25331-result.json
+#	deleted:    allure-results/a81d6cf3-72f2-4b39-b8d8-d41398232380-result.json
+#	deleted:    allure-results/ac01b630-3946-4cc1-8794-77ca483b94c5-result.json
+#	deleted:    allure-results/b4746832-4ac9-4b0b-aacf-160ce8d02763-result.json
+#	deleted:    allure-results/b4b1f01b-88bf-4e54-af74-ba411da45507-result.json
+#	deleted:    allure-results/bd0d39e6-02ab-4e68-b03a-661155ce2b38-result.json
+#	deleted:    allure-results/bfe6bbec-d9ef-4ee7-bc4e-4a3e5bafb583-result.json
+#	deleted:    allure-results/c802f442-3ace-4770-bf7e-148525e0d981-result.json
+#	deleted:    allure-results/cc46c727-8201-422b-a0c6-dd801a9a107b-result.json
+#	deleted:    allure-results/da26048d-8aea-4bf8-b247-f0e8e55554a7-result.json
+#	deleted:    allure-results/df08c78d-7dc0-4787-8296-986c09d369f6-result.json
+#	deleted:    allure-results/f38d435e-ee19-4c72-af55-4fb06a74b692-result.json
+#	deleted:    allure-results/f94b375f-0d79-483e-9119-f28412a39c4f-result.json
+#	new file:   tests/Recruitment/searchCandidateBySingleField.spec.ts
+#

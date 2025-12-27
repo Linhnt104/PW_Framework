@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 launch_status_failed 0
 launch_status_broken 9
 launch_status_passed 0
@@ -12,3 +13,20 @@ launch_time_stop 1766207784645
 launch_problems_test_defects 9
 launch_retries_retries 11
 launch_retries_run 9
+=======
+launch_status_failed 1
+launch_status_broken 2
+launch_status_passed 10
+launch_status_skipped 0
+launch_status_unknown 0
+launch_time_duration 95137629
+launch_time_min_duration 13260
+launch_time_max_duration 30069
+launch_time_sum_duration 270235
+launch_time_start 1766070823097
+launch_time_stop 1766165960726
+launch_problems_product_defects 1
+launch_problems_test_defects 2
+launch_retries_retries 52
+launch_retries_run 13
+>>>>>>> 1617157822cd555a11a998ee87365fefb9b8aec8
