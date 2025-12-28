@@ -30,24 +30,17 @@ export default class RecruitmentPage extends BaseTest {
     private saveBtn = "//button[text()=' Save ']";
   // search candidate
     private searchSelectJobTitle = "//label[text()='Job Title']//parent::div//following-sibling::div//div[text()='-- Select --']";
-    private searchJobTitleOption = "//span[text()='Chief Executive Officer']";
     private searchSelectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div//div[text()='-- Select --']";
-    private searchVacancyOption = "//span[text()='Payroll Administrator']";
     private searchSelectHiringManager = "//label[text()='Hiring Manager']//parent::div//following-sibling::div//div[text()='-- Select --']";
-    private searchHiringManagerOption = "//span[text()='Virat Kohli']";
     private searchSelectStatus = "//label[text()='Status']//parent::div//following-sibling::div//div[text()='-- Select --']";
-    private searchStatusOption = "//span[text()='Application Initiated']";
     private searchCandidateNameKey = "//input[@placeholder='Type for hints...']";
     private searchCandidateNameOption = "(//span[text()='John  Doe'])[1]";
     private searchKeywords = "//input[@placeholder='Enter comma seperated words...']";
     private searchSelectDateOfAppFrom = "//input[@placeholder='From']";
-    private searchDateOfAppFromOption = "//div[text()='17']";
     private searchSelectDateOfAppTo = "//input[@placeholder='To']";
-    private searchDateOfAppToOption = "//div[text()='20']";
     private searchSelectMethodOfApp = "//label[text()='Method of Application']//parent::div//following-sibling::div//div[text()='-- Select --']";
-    private searchMethodOfAppOption = "//span[text()='Manual']";
     private searchCandidateBtn = "//button[text()=' Search ']";
-
+    private resetCandidateSearchBtn = "//button[text()=' Reset ']";
   // add vacancy
     private vacancyTab = "//a[text()='Vacancies']";
     private addVacancyBtn = "//button[text()=' Add ']";
@@ -165,48 +158,84 @@ export default class RecruitmentPage extends BaseTest {
   }
   
 
-  async searchCandidate(searchCandidateInfo: RecruitmentSearchCandidateForm): Promise<void>{
-    await this.page.click(this.searchSelectJobTitle);
-    await this.page.getByText(searchCandidateInfo.jobTitle).click();
+  async searchCandidateBySingleField(searchCandidateInfo: RecruitmentSearchCandidateForm): Promise<void>{
+    // select by vacancy
     await this.page.click(this.searchSelectVacancy);
-    await this.page.locator("span").filter({ hasText: searchCandidateInfo.vacancy }).click();
-    await this.page.click(this.searchSelectHiringManager);
-    await this.page.locator("//div[@role='option']//span").filter({ hasText: searchCandidateInfo.hiringManager }).click();
-    await this.page.click(this.searchSelectStatus);
-    await this.page.locator("span").filter({ hasText: searchCandidateInfo.status }).click();
-    await this.page.fill(this.searchCandidateNameKey, searchCandidateInfo.candidateNameKey);
-    await this.page.locator("//div[@role='option']//span").filter({ hasText: searchCandidateInfo.candidateNameOption }).click();
-    await this.page.fill(this.searchKeywords, searchCandidateInfo.keywords);
-    await this.page.click(this.searchSelectDateOfAppFrom);
-    await this.page.getByText(searchCandidateInfo.dateOfAppFrom).click();
-    await this.page.click(this.searchSelectDateOfAppTo);
-    await this.page.getByText(searchCandidateInfo.dateOfAppTo).click();
-    await this.page.click(this.searchSelectMethodOfApp);
-    await this.page.getByText(searchCandidateInfo.methodOfApp).click();
+    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.vacancy}).click();
     await this.page.click(this.searchCandidateBtn);
-    // no record
-    // await expect(this.noRecordsText).toBeVisible();
+    if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
+      const rows = await this.page.locator("//div[@lass='oxd-table-card']").all();
+      for(const row of rows){
+        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const vacancy = await cells.nth(1).textContent();
+        expect(vacancy).toContain(searchCandidateData.vacancy);
+      }
+    }else if(await this.noRecordsText.isVisible()){
+      await expect(this.noRecordsText).toBeVisible();
+    }
+    await this.page.click(this.resetCandidateSearchBtn);
+     // search by candidate name
+    await this.page.fill(this.searchCandidateNameKey, searchCandidateData.candidateNameKey);
+    await this.page.click(this.searchCandidateBtn);
+    if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
+      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      for(const row of rows){
+        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const candidateName = await cells.nth(2).textContent();
+        expect(candidateName).toContain(searchCandidateData.candidateNameOption);
+      }
+    }else if(await this.noRecordsText.isVisible()){
+      await expect(this.noRecordsText).toBeVisible();
+    }
+    await this.page.click(this.resetCandidateSearchBtn);
+    // search by hiring manager
+    await this.page.click(this.searchSelectHiringManager);
+    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.hiringManager}).click();
+    await this.page.click(this.searchCandidateBtn);
+    if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
+      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      for(const row of rows){
+        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const hiringManager = await cells.nth(3).textContent();
+        expect(hiringManager).toContain(searchCandidateData.hiringManager);
+      }
+    }else if(await this.noRecordsText.isVisible()){
+      await expect(this.noRecordsText).toBeVisible();
+    }
+    await this.page.click(this.resetCandidateSearchBtn);
 
-    // have record
-    // await expect(this.multipleRecordsFoundText).toBeVisible();
-
-    // have data 
-    const rows = await this.page.locator("//div[contains(@class,'oxd-table-row')]").all();
-    console.log(typeof rows);
-    for (const row of rows) {
-    const cells = await row.locator("//div[contains(@class,'oxd-table-cell')]").allTextContents();
-    // const vacancy = cells[2]?.toLowerCase();
-    const candidate = cells[3]?.toLowerCase();
-    const hiringManager = cells[4]?.toLowerCase();
-    const dateOfApp = cells[5]?.toLowerCase();
-    const status = cells[6]?.toLowerCase();
-    // expect(vacancy).toContain(searchCandidateData.vacancy.toLowerCase());
-    expect(candidate).toContain(searchCandidateData.candidateNameOption.toLowerCase());
-    expect(hiringManager).toContain(searchCandidateData.hiringManager.toLowerCase());
-    expect(dateOfApp).toContain(searchCandidateData.dateOfAppFrom.toLowerCase());
-    expect(status).toContain(searchCandidateData.status.toLowerCase());
+     // search by date of app from
+    await this.page.click(this.searchSelectDateOfAppFrom);
+    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.dateOfAppFrom}).click();
+    await this.page.click(this.searchCandidateBtn);
+    if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
+      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      for(const row of rows){
+        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const dateOfAppFrom = await cells.nth(4).textContent();
+        expect(dateOfAppFrom).toContain(searchCandidateData.dateOfAppFrom);
+      }
+    }else if(await this.noRecordsText.isVisible()){
+      await expect(this.noRecordsText).toBeVisible();
+    }
+    await this.page.click(this.resetCandidateSearchBtn);
+    // search by status
+    await this.page.click(this.searchSelectStatus);
+    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.status}).click();
+    await this.page.click(this.searchCandidateBtn);
+    if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
+      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      for(const row of rows){
+        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const status = await cells.nth(5).textContent();
+        expect(status).toContain(searchCandidateData.status);
+      }
+    }else if(await this.noRecordsText.isVisible()){
+      await expect(this.noRecordsText).toBeVisible();
+    }
+    await this.page.click(this.resetCandidateSearchBtn);
+   
   }
-}
 
 
   async addVacancySuccessfully(recruitmentVacancyInfo: RecruitmentVacancyForm): Promise<RecruitmentPage>{
