@@ -30,6 +30,7 @@ export default class RecruitmentPage extends BaseTest {
     private saveBtn = "//button[text()=' Save ']";
   // search candidate
     private searchSelectJobTitle = "//label[text()='Job Title']//parent::div//following-sibling::div//div[text()='-- Select --']";
+    private options = "//div[@role='option']//span";
     private searchSelectVacancy = "//label[text()='Vacancy']//parent::div//following-sibling::div//div[text()='-- Select --']";
     private searchSelectHiringManager = "//label[text()='Hiring Manager']//parent::div//following-sibling::div//div[text()='-- Select --']";
     private searchSelectStatus = "//label[text()='Status']//parent::div//following-sibling::div//div[text()='-- Select --']";
@@ -41,6 +42,8 @@ export default class RecruitmentPage extends BaseTest {
     private searchSelectMethodOfApp = "//label[text()='Method of Application']//parent::div//following-sibling::div//div[text()='-- Select --']";
     private searchCandidateBtn = "//button[text()=' Search ']";
     private resetCandidateSearchBtn = "//button[text()=' Reset ']";
+    private rowsLocator = "//div[@lass='oxd-table-card']";
+    private cellsLocator = "//div[contains(@class,'oxd-table-cell']";;
   // add vacancy
     private vacancyTab = "//a[text()='Vacancies']";
     private addVacancyBtn = "//button[text()=' Add ']";
@@ -161,12 +164,12 @@ export default class RecruitmentPage extends BaseTest {
   async searchCandidateBySingleField(searchCandidateInfo: RecruitmentSearchCandidateForm): Promise<void>{
     // select by vacancy
     await this.page.click(this.searchSelectVacancy);
-    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.vacancy}).click();
+    await this.page.locator(this.options).filter({hasText: searchCandidateInfo.vacancy}).click();
     await this.page.click(this.searchCandidateBtn);
     if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
-      const rows = await this.page.locator("//div[@lass='oxd-table-card']").all();
+      const rows = await this.page.locator(this.rowsLocator).all();
       for(const row of rows){
-        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const cells = row.locator(this.cellsLocator);
         const vacancy = await cells.nth(1).textContent();
         expect(vacancy).toContain(searchCandidateData.vacancy);
       }
@@ -178,9 +181,9 @@ export default class RecruitmentPage extends BaseTest {
     await this.page.fill(this.searchCandidateNameKey, searchCandidateData.candidateNameKey);
     await this.page.click(this.searchCandidateBtn);
     if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
-      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      const rows = await this.page.locator(this.rowsLocator).all();
       for(const row of rows){
-        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const cells = row.locator(this.cellsLocator);
         const candidateName = await cells.nth(2).textContent();
         expect(candidateName).toContain(searchCandidateData.candidateNameOption);
       }
@@ -190,12 +193,12 @@ export default class RecruitmentPage extends BaseTest {
     await this.page.click(this.resetCandidateSearchBtn);
     // search by hiring manager
     await this.page.click(this.searchSelectHiringManager);
-    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.hiringManager}).click();
+    await this.page.locator(this.options).filter({hasText: searchCandidateInfo.hiringManager}).click();
     await this.page.click(this.searchCandidateBtn);
     if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
-      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      const rows = await this.page.locator(this.rowsLocator).all();
       for(const row of rows){
-        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const cells = row.locator(this.cellsLocator);
         const hiringManager = await cells.nth(3).textContent();
         expect(hiringManager).toContain(searchCandidateData.hiringManager);
       }
@@ -206,12 +209,12 @@ export default class RecruitmentPage extends BaseTest {
 
      // search by date of app from
     await this.page.click(this.searchSelectDateOfAppFrom);
-    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.dateOfAppFrom}).click();
+    await this.page.locator(this.options).filter({hasText: searchCandidateInfo.dateOfAppFrom}).click();
     await this.page.click(this.searchCandidateBtn);
     if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
-      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      const rows = await this.page.locator(this.rowsLocator).all();
       for(const row of rows){
-        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const cells = row.locator(this.cellsLocator);
         const dateOfAppFrom = await cells.nth(4).textContent();
         expect(dateOfAppFrom).toContain(searchCandidateData.dateOfAppFrom);
       }
@@ -221,12 +224,12 @@ export default class RecruitmentPage extends BaseTest {
     await this.page.click(this.resetCandidateSearchBtn);
     // search by status
     await this.page.click(this.searchSelectStatus);
-    await this.page.locator("//div[@role='option']//span").filter({hasText: searchCandidateInfo.status}).click();
+    await this.page.locator(this.options).filter({hasText: searchCandidateInfo.status}).click();
     await this.page.click(this.searchCandidateBtn);
     if(await this.multipleRecordsFoundText.isVisible() || await this.singleRecordFoundText.isVisible()){
-      const rows = await this.page.locator("//div[@lass='oxd-table-card").all();
+      const rows = await this.page.locator(this.rowsLocator).all();
       for(const row of rows){
-        const cells = row.locator("//div[contains(@class,'oxd-table-cell']");
+        const cells = row.locator(this.cellsLocator);
         const status = await cells.nth(5).textContent();
         expect(status).toContain(searchCandidateData.status);
       }
@@ -234,7 +237,6 @@ export default class RecruitmentPage extends BaseTest {
       await expect(this.noRecordsText).toBeVisible();
     }
     await this.page.click(this.resetCandidateSearchBtn);
-   
   }
 
 
