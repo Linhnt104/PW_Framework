@@ -57,11 +57,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Convert report to Excel
-        if: github.ref == 'refs/heads/main'
-        run: node scripts/report-to-excel.js
+        if: always()
+        run: node .github/workflows/scripts/report-to-excel.js
 
       - name: Upload Excel
-        if: github.ref == 'refs/heads/main'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results-excel
