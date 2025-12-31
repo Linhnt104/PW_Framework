@@ -6,6 +6,7 @@ const storageStatePath = path.join(__dirname, 'storageState.json');
 export default defineConfig({
   reporter: [
     ['list'],
+    ['json', { outputFile: 'playwright-report.json' }],
     ['allure-playwright', { outputFolder: 'allure-results' }],
   ],
   testDir: './tests',
