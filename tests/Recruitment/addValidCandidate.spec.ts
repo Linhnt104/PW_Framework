@@ -7,4 +7,6 @@ test('add candidate with optional fields and full fields successfully', async ({
    const recruitmentPage = new RecruitmentPage(page);
    await recruitmentPage.goToRecruitmentPage();
    await recruitmentPage.addCandidateSuccessfully(candidateData);
-})
+});
+
+

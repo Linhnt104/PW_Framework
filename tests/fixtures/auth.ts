@@ -13,7 +13,6 @@ export const test = base.extend<Fixtures>({
     // Login luôn chạy trước mỗi test (vì fixture tạo ra per-test)
     await loginPage.goToHomePage();
     await loginPage.loginWithValidAccount(validUserData);
-
     await use(loginPage);
   },
 });

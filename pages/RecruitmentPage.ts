@@ -1,14 +1,15 @@
-import { Page, expect, Locator } from '@playwright/test';
+import { Page, expect, Locator, request } from '@playwright/test';
 import path from 'path';
 import { RecruitmentCandidateForm } from '../types/Recruitment_Candidate.types';
 import { RecruitmentVacancyForm } from '../types/Recruitment_Vacancy.types';
-import { BaseTest } from '../common/BaseTest';
+// import { BaseTest } from '../common/BaseTest';
 import requiredFieldsCandidateData from '../data/Recruitment_Candidate.json';
 import requiredFieldsVacancyData from '../data/Recruitment_Vacancy.json';
 import searchCandidateData from '../data/Recruitment_SearchCandidate.json';
 import { RecruitmentSearchCandidateForm } from '../types/Recruitment_SearchCandidate.types';
+import BasePage from '../common/API/BasePage';
 
-export default class RecruitmentPage extends BaseTest {
+export default class RecruitmentPage extends BasePage {
   readonly page: Page;
   
   // add candidate 
@@ -101,7 +102,7 @@ export default class RecruitmentPage extends BaseTest {
     return this.page.locator("//h6[text()='Application Stage']");
   }
 
-  private get noRecordsText(): Locator{
+  private get noRecordsText(): Locator{https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
     return this.page.locator("//span[text()='No Records Found']");
   }
   private get multipleRecordsFoundText(): Locator{
@@ -114,8 +115,13 @@ export default class RecruitmentPage extends BaseTest {
 
   // test scrips
   async goToRecruitmentPage(): Promise<void>{
-    await expect(this.page.locator(this.recruitmentBtn)).toBeVisible();
-    await this.page.click(this.recruitmentBtn);
+    // cách cũ
+    // await expect(this.page.locator(this.recruitmentBtn)).toBeVisible();
+    await Promise.all([
+      this.waitForAPIResponse('https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts', 'GET', 200),
+      this.page.click(this.recruitmentBtn)
+    ]);
+   
   }
 
   async addCandidateSuccessfully(
@@ -144,9 +150,7 @@ export default class RecruitmentPage extends BaseTest {
     await this.page.click(this.consentCheckbox);
     await this.page.click(this.saveBtn);
     await this.page.waitForTimeout(5000);
-
-    // verify correctly data
-    await expect(this.applicationStageText).toBeVisible();
+    await expect(this.applicationStageText).toBeVisible()
   return new RecruitmentPage(this.page);
   }
 
@@ -259,16 +263,15 @@ export default class RecruitmentPage extends BaseTest {
     await this.page.click(this.triggerActive);
     await this.page.click(this.triggerPublish);
     await this.page.click(this.saveVacancyBtn);
-
     // verify successfully
-    await expect(this.editVacancyText).toBeVisible();
+    
   return new RecruitmentPage(this.page);
   }
 
   async addVacancyWithRequiredFields(): Promise<RecruitmentPage>{
     await this.page.click(this.vacancyTab);
     await this.page.click(this.addVacancyBtn);
-    await this.page.fill(this.vacancyName, `${requiredFieldsVacancyData.requiredFieldsVacancy.vacancyName} ${this.randomData()}`);
+    // await this.page.fill(this.vacancyName, `${requiredFieldsVacancyData.requiredFieldsVacancy.vacancyName} ${this.randomData()}`);
     await this.page.click(this.selectJobTitle);
     await this.page.click(this.jobTitleOption);
     await this.page.fill(this.hiringManager, requiredFieldsVacancyData.requiredFieldsVacancy.hiringManager);

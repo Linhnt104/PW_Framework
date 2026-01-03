@@ -1,0 +1,201 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Asus\\Playwright_Framework\\playwright.config.ts",
+    "rootDir": "C:/Users/Asus/Playwright_Framework/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 1,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report.json"
+        }
+      ],
+      [
+        "C:\\Users\\Asus\\Playwright_Framework\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        {
+          "outputFolder": "allure-results"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Asus/Playwright_Framework/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Asus/Playwright_Framework/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 0
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "Recruitment\\addValidCandidate.spec.ts",
+      "file": "Recruitment/addValidCandidate.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "add candidate with optional fields and full fields successfully",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 0,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewRecruitmentModule | Method: GET | Status: 302\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/css/chunk-vendors.css?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/css/app.css?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/js/chunk-vendors.js?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/js/app.js?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-300.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-regular.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-italic.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-600.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-700.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-800.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/bootstrap-icons.woff2 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/favicon.ico?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/core/i18n/messages | Method: GET | Status: 304\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orange.png?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orangehrm-logo.png?v=1763650546848 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates?limit=50&offset=0&model=list&sortField=candidate.dateOfApplication&sortOrder=DESC | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/vacancies?model=summary&limit=0&excludeInterviewers=false | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/hiring-managers?limit=0 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/job-titles?limit=0 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/7 | Method: GET | Status: 304\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/workweek?model=indexed | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/holidays?fromDate=2026-01-01&toDate=2026-12-31 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/holidays?fromDate=2026-01-01&toDate=2026-12-31 | Method: GET | Status: 200\n"
+                    },
+                    {
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/workweek?model=indexed | Method: GET | Status: 200\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-03T16:22:00.538Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "d969d0107e7542b21e37-be88657c69211e402e49",
+          "file": "Recruitment/addValidCandidate.spec.ts",
+          "line": 6,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-01-03T16:21:59.930Z",
+    "duration": 489407.702,
+    "expected": 0,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

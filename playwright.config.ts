@@ -1,9 +1,15 @@
 import path from 'path';
 import { defineConfig, devices } from '@playwright/test';
-
+import { PlaywrightTestConfig } from '@playwright/test';
 const storageStatePath = path.join(__dirname, 'storageState.json');
 
-export default defineConfig({
+const config: PlaywrightTestConfig = {
+  // use: {
+  //   baseURL: 'https://opensource-demo.orangehrmlive.com',
+  //   // extraHTTPHeaders: {
+  //   //   Authorization: `Bearer your_access_token`,
+  //   // },
+  // },
   reporter: [
     ['list'],
     ['json', { outputFile: 'playwright-report.json' }],
@@ -18,6 +24,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+  
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   // use: {
@@ -66,6 +73,7 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
+  
 
   /* Run your local dev server before starting the tests */
   // webServer: {
@@ -73,4 +81,5 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-});
+};
+export default config;
