@@ -72,7 +72,7 @@
       "specs": [
         {
           "title": "add candidate with optional fields and full fields successfully",
-          "ok": true,
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -85,100 +85,64 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "skipped",
-                  "duration": 0,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 107438,
+                  "error": {
+                    "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//span[text()=\\'Recruitment\\']')\u001b[22m\n",
+                    "stack": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//span[text()=\\'Recruitment\\']')\u001b[22m\n\n    at RecruitmentPage.goToRecruitmentPage (C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts:122:17)\n    at C:\\Users\\Asus\\Playwright_Framework\\tests\\Recruitment\\addValidCandidate.spec.ts:8:26",
+                    "location": {
+                      "file": "C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts",
+                      "column": 17,
+                      "line": 122
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\RecruitmentPage.ts:122\n\n\u001b[0m \u001b[90m 120 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n \u001b[90m 121 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mwaitForAPIResponse(\u001b[32m'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'GET'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m200\u001b[39m)\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 122 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrecruitmentBtn)\n \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 123 |\u001b[39m     ])\u001b[33m;\u001b[39m\n \u001b[90m 124 |\u001b[39m    \n \u001b[90m 125 |\u001b[39m   }\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts",
+                        "column": 17,
+                        "line": 122
+                      },
+                      "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//span[text()=\\'Recruitment\\']')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\RecruitmentPage.ts:122\n\n\u001b[0m \u001b[90m 120 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n \u001b[90m 121 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mwaitForAPIResponse(\u001b[32m'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'GET'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m200\u001b[39m)\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 122 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrecruitmentBtn)\n \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 123 |\u001b[39m     ])\u001b[33m;\u001b[39m\n \u001b[90m 124 |\u001b[39m    \n \u001b[90m 125 |\u001b[39m   }\u001b[0m\n\u001b[2m    at RecruitmentPage.goToRecruitmentPage (C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts:122:17)\u001b[22m\n\u001b[2m    at C:\\Users\\Asus\\Playwright_Framework\\tests\\Recruitment\\addValidCandidate.spec.ts:8:26\u001b[22m"
+                    }
+                  ],
                   "stdout": [
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewRecruitmentModule | Method: GET | Status: 302\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/css/chunk-vendors.css?v=1763650546848 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/css/app.css?v=1763650546848 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/js/chunk-vendors.js?v=1763650546848 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/js/app.js?v=1763650546848 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-300.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-regular.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-italic.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-600.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-700.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-800.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/fonts/bootstrap-icons.woff2 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/dist/favicon.ico?v=1763650546848 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/core/i18n/messages | Method: GET | Status: 304\n"
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orangehrm-logo.png?v=1763650546848 | Method: GET | Status: 200\n"
                     },
                     {
                       "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orange.png?v=1763650546848 | Method: GET | Status: 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orangehrm-logo.png?v=1763650546848 | Method: GET | Status: 200\n"
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/dashboard_empty_widget_watermark.png | Method: GET | Status: 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates?limit=50&offset=0&model=list&sortField=candidate.dateOfApplication&sortOrder=DESC | Method: GET | Status: 200\n"
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/7 | Method: GET | Status: 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/vacancies?model=summary&limit=0&excludeInterviewers=false | Method: GET | Status: 200\n"
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/employees/time-at-work?timezoneOffset=7&currentDate=2026-01-03&currentTime=23:38 | Method: GET | Status: 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/hiring-managers?limit=0 | Method: GET | Status: 200\n"
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/buzz/feed?limit=5&offset=0&sortOrder=DESC&sortField=share.createdAtUtc | Method: GET | Status: 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/job-titles?limit=0 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/7 | Method: GET | Status: 304\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/workweek?model=indexed | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/holidays?fromDate=2026-01-01&toDate=2026-12-31 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/holidays?fromDate=2026-01-01&toDate=2026-12-31 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/leave/workweek?model=indexed | Method: GET | Status: 200\n"
+                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts | Method: GET | Status: 200\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-01-03T16:22:00.538Z",
+                  "startTime": "2026-01-03T16:38:19.025Z",
                   "annotations": [],
-                  "attachments": []
+                  "attachments": [],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts",
+                    "column": 17,
+                    "line": 122
+                  }
                 }
               ],
-              "status": "skipped"
+              "status": "unexpected"
             }
           ],
           "id": "d969d0107e7542b21e37-be88657c69211e402e49",
@@ -189,13 +153,17 @@
       ]
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
+    }
+  ],
   "stats": {
-    "startTime": "2026-01-03T16:21:59.930Z",
-    "duration": 489407.702,
+    "startTime": "2026-01-03T16:38:18.271Z",
+    "duration": 108679.913,
     "expected": 0,
-    "skipped": 1,
-    "unexpected": 0,
+    "skipped": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }
