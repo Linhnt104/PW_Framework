@@ -1,7 +1,7 @@
 import {Page, expect, Locator} from '@playwright/test';
-import { LoginForm } from '../types/Login.types';
+import { LoginForm } from '../../types/Login.types';
 import { userInfo } from 'os';
-import loginData from '../data/Login.json';
+import loginData from '../../data/Login.json';
 
 export default class LoginPage{
     readonly page: Page;

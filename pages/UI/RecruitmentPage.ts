@@ -1,16 +1,18 @@
 import { Page, expect, Locator, request } from '@playwright/test';
 import path from 'path';
-import { RecruitmentCandidateForm } from '../types/Recruitment_Candidate.types';
-import { RecruitmentVacancyForm } from '../types/Recruitment_Vacancy.types';
-// import { BaseTest } from '../common/BaseTest';
-import requiredFieldsCandidateData from '../data/Recruitment_Candidate.json';
-import requiredFieldsVacancyData from '../data/Recruitment_Vacancy.json';
-import searchCandidateData from '../data/Recruitment_SearchCandidate.json';
-import { RecruitmentSearchCandidateForm } from '../types/Recruitment_SearchCandidate.types';
-import BasePage from '../common/API/BasePage';
+import { RecruitmentCandidateForm } from '../../types/Recruitment_Candidate.types';
+import { RecruitmentVacancyForm } from '../../types/Recruitment_Vacancy.types';
+import requiredFieldsCandidateData from '../../data/Recruitment_Candidate.json';
+import requiredFieldsVacancyData from '../../data/Recruitment_Vacancy.json';
+import searchCandidateData from '../../data/Recruitment_SearchCandidate.json';
+import { RecruitmentSearchCandidateForm } from '../../types/Recruitment_SearchCandidate.types';
+import BasePage from '../../common/API/waitAPI';
+import ApiPage from '../API/RecruitmentApiPage';
+import RecruitmentApiPage from '../API/RecruitmentApiPage';
+import { BaseTest } from '../../common/Pages/BaseTest';
 
 export default class RecruitmentPage extends BasePage {
-  readonly page: Page;
+  // readonly page: Page;
   
   // add candidate 
     private recruitmentBtn = "//span[text()='Recruitment']";
@@ -68,9 +70,18 @@ export default class RecruitmentPage extends BasePage {
     private searchVHiringManagerOption = "//span[text()='Virat Kohli']";
     private searchVSelectStatus = "//label[text()='Status']//parent::div//following-sibling::div//div[text()='-- Select --']";
     private searchVStatusOption = "//span[text()='Active']";
+
+  // constructor(page: Page, private recruitmentApi: RecruitmentApiPage) {
+  //   super(page); // super để khi khởi tạo page object sẽ dùng tất cả những method từ thằng cha
+  //   this.page = page;
+  //   this.recruitmentApi = recruitmentApi;
+  // }
+
+  private recruitmentApi: RecruitmentApiPage;
+
   constructor(page: Page) {
-    super(page); // super để khi khởi tạo page object sẽ dùng tất cả những method từ thằng cha
-    this.page = page;
+      super(page);
+      this.recruitmentApi = new RecruitmentApiPage(page);
   }
 
   private get successMess(): Locator {
@@ -114,14 +125,19 @@ export default class RecruitmentPage extends BasePage {
 
 
   // test scrips
-  async goToRecruitmentPage(): Promise<void>{
+  async goToRecruitmentPage() {
     // cách cũ
     // await expect(this.page.locator(this.recruitmentBtn)).toBeVisible();
+    // await Promise.all([
+    //   this.waitForAPIResponse('https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts', 'GET', 200),
+    //   this.page.click(this.recruitmentBtn)
+    // ]);
+
+    // cách mới
     await Promise.all([
-      this.waitForAPIResponse('https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts', 'GET', 200),
-      this.page.click(this.recruitmentBtn)
+      this.recruitmentApi.waitForRecruitmentListLoaded(),
+      this.page.click(this.recruitmentBtn),
     ]);
-   
   }
 
   async addCandidateSuccessfully(
@@ -253,7 +269,7 @@ export default class RecruitmentPage extends BasePage {
     await expect(this.requiredMessJobTitle).toBeVisible();
     await expect(this.requiredMessHiringManager).toBeVisible();
     // add vacancy successfully
-    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${this.randomData()}`);
+    await this.page.fill(this.vacancyName, `${recruitmentVacancyInfo.vacancyName} ${BaseTest.prototype.randomData()}`);
     await this.page.click(this.selectJobTitle);
     await this.page.click(this.jobTitleOption);
     await this.page.fill(this.description, recruitmentVacancyInfo.description);
@@ -264,8 +280,8 @@ export default class RecruitmentPage extends BasePage {
     await this.page.click(this.triggerPublish);
     await this.page.click(this.saveVacancyBtn);
     // verify successfully
-    
   return new RecruitmentPage(this.page);
+  
   }
 
   async addVacancyWithRequiredFields(): Promise<RecruitmentPage>{
@@ -279,7 +295,6 @@ export default class RecruitmentPage extends BasePage {
     await this.page.click(this.triggerActive);
     await this.page.click(this.triggerPublish);
     await this.page.click(this.saveVacancyBtn);
-
     // verify successfully
     await expect(this.editVacancyText).toBeVisible();
   return new RecruitmentPage(this.page);

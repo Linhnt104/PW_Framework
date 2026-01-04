@@ -1,5 +1,5 @@
 import { test } from '../fixtures/auth';
-import RecruitmentPage from '../../pages/RecruitmentPage';
+import RecruitmentPage from '../../pages/UI/RecruitmentPage';
 import { recruitmentSearchCandidateData } from '../../test-mapping/Recruitment_SearchCandidate_Data';
 
 
