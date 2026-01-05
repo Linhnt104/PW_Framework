@@ -7,11 +7,10 @@ import requiredFieldsVacancyData from '../../data/Recruitment_Vacancy.json';
 import searchCandidateData from '../../data/Recruitment_SearchCandidate.json';
 import { RecruitmentSearchCandidateForm } from '../../types/Recruitment_SearchCandidate.types';
 import BasePage from '../../common/API/waitAPI';
-import ApiPage from '../API/RecruitmentApiPage';
 import RecruitmentApiPage from '../API/RecruitmentApiPage';
 import { BaseTest } from '../../common/Pages/BaseTest';
 
-export default class RecruitmentPage extends BasePage {
+export default class RecruitmentPage extends BaseTest {
   // readonly page: Page;
   
   // add candidate 
@@ -126,17 +125,9 @@ export default class RecruitmentPage extends BasePage {
 
   // test scrips
   async goToRecruitmentPage() {
-    // cách cũ
-    // await expect(this.page.locator(this.recruitmentBtn)).toBeVisible();
-    // await Promise.all([
-    //   this.waitForAPIResponse('https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts', 'GET', 200),
-    //   this.page.click(this.recruitmentBtn)
-    // ]);
-
-    // cách mới
     await Promise.all([
       this.recruitmentApi.waitForRecruitmentListLoaded(),
-      this.page.click(this.recruitmentBtn),
+      this.page.click(this.recruitmentBtn)
     ]);
   }
 
@@ -165,8 +156,10 @@ export default class RecruitmentPage extends BasePage {
     await this.page.fill(this.note, recruitmentCandidateInfo.note);
     await this.page.click(this.consentCheckbox);
     await this.page.click(this.saveBtn);
-    await this.page.waitForTimeout(5000);
-    await expect(this.applicationStageText).toBeVisible()
+    await Promise.all([
+      this.recruitmentApi.waitForCandidateDetail(),
+      expect(this.successMess).toBeVisible()
+    ]);
   return new RecruitmentPage(this.page);
   }
 
@@ -280,8 +273,11 @@ export default class RecruitmentPage extends BasePage {
     await this.page.click(this.triggerPublish);
     await this.page.click(this.saveVacancyBtn);
     // verify successfully
+    await Promise.all([
+      this.recruitmentApi.waitForVacancyDetail(),
+      expect(this.editVacancyText).toBeVisible()
+    ]);
   return new RecruitmentPage(this.page);
-  
   }
 
   async addVacancyWithRequiredFields(): Promise<RecruitmentPage>{
