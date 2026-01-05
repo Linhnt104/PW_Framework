@@ -9,7 +9,7 @@
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
-    "maxFailures": 1,
+    "maxFailures": 0,
     "metadata": {
       "actualWorkers": 1
     },
@@ -52,7 +52,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 0
+        "timeout": 30000
       }
     ],
     "shard": null,
@@ -60,23 +60,23 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.57.0",
-    "workers": 1,
+    "workers": 8,
     "webServer": null
   },
   "suites": [
     {
-      "title": "Recruitment\\addValidCandidate.spec.ts",
-      "file": "Recruitment/addValidCandidate.spec.ts",
+      "title": "Recruitment\\addValidVacancy.spec.ts",
+      "file": "Recruitment/addValidVacancy.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "add candidate with optional fields and full fields successfully",
-          "ok": false,
+          "title": "add vacancy with optional fields and full fields successfully",
+          "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 0,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "chromium",
@@ -85,85 +85,45 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 107438,
-                  "error": {
-                    "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//span[text()=\\'Recruitment\\']')\u001b[22m\n",
-                    "stack": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//span[text()=\\'Recruitment\\']')\u001b[22m\n\n    at RecruitmentPage.goToRecruitmentPage (C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts:122:17)\n    at C:\\Users\\Asus\\Playwright_Framework\\tests\\Recruitment\\addValidCandidate.spec.ts:8:26",
-                    "location": {
-                      "file": "C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts",
-                      "column": 17,
-                      "line": 122
-                    },
-                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\RecruitmentPage.ts:122\n\n\u001b[0m \u001b[90m 120 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n \u001b[90m 121 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mwaitForAPIResponse(\u001b[32m'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'GET'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m200\u001b[39m)\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 122 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrecruitmentBtn)\n \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 123 |\u001b[39m     ])\u001b[33m;\u001b[39m\n \u001b[90m 124 |\u001b[39m    \n \u001b[90m 125 |\u001b[39m   }\u001b[0m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts",
-                        "column": 17,
-                        "line": 122
-                      },
-                      "message": "Error: page.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//span[text()=\\'Recruitment\\']')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\RecruitmentPage.ts:122\n\n\u001b[0m \u001b[90m 120 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m.\u001b[39mall([\n \u001b[90m 121 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mwaitForAPIResponse(\u001b[32m'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'GET'\u001b[39m\u001b[33m,\u001b[39m \u001b[35m200\u001b[39m)\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 122 |\u001b[39m       \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrecruitmentBtn)\n \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 123 |\u001b[39m     ])\u001b[33m;\u001b[39m\n \u001b[90m 124 |\u001b[39m    \n \u001b[90m 125 |\u001b[39m   }\u001b[0m\n\u001b[2m    at RecruitmentPage.goToRecruitmentPage (C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts:122:17)\u001b[22m\n\u001b[2m    at C:\\Users\\Asus\\Playwright_Framework\\tests\\Recruitment\\addValidCandidate.spec.ts:8:26\u001b[22m"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 24764,
+                  "errors": [],
                   "stdout": [
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orangehrm-logo.png?v=1763650546848 | Method: GET | Status: 200\n"
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses -> 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/orange.png?v=1763650546848 | Method: GET | Status: 200\n"
+                      "text": "[API watch] urlMatched=true methodOk=false statusOk=true | POST https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/vacancies -> 200\n"
                     },
                     {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/images/dashboard_empty_widget_watermark.png | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPhoto/empNumber/7 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/employees/time-at-work?timezoneOffset=7&currentDate=2026-01-03&currentTime=23:38 | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/buzz/feed?limit=5&offset=0&sortOrder=DESC&sortField=share.createdAtUtc | Method: GET | Status: 200\n"
-                    },
-                    {
-                      "text": "Checking: https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/shortcuts | Method: GET | Status: 200\n"
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/vacancies/14 -> 200\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-01-03T16:38:19.025Z",
+                  "startTime": "2026-01-05T15:51:58.398Z",
                   "annotations": [],
-                  "attachments": [],
-                  "errorLocation": {
-                    "file": "C:\\Users\\Asus\\Playwright_Framework\\pages\\RecruitmentPage.ts",
-                    "column": 17,
-                    "line": 122
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
-          "id": "d969d0107e7542b21e37-be88657c69211e402e49",
-          "file": "Recruitment/addValidCandidate.spec.ts",
-          "line": 6,
+          "id": "2bf7674a64b691c682c5-6a478afaabd6d57ec463",
+          "file": "Recruitment/addValidVacancy.spec.ts",
+          "line": 5,
           "column": 5
         }
       ]
     }
   ],
-  "errors": [
-    {
-      "message": "\u001b[31mTesting stopped early after 1 maximum allowed failures.\u001b[39m"
-    }
-  ],
+  "errors": [],
   "stats": {
-    "startTime": "2026-01-03T16:38:18.271Z",
-    "duration": 108679.913,
-    "expected": 0,
+    "startTime": "2026-01-05T15:51:56.865Z",
+    "duration": 26999.683,
+    "expected": 1,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

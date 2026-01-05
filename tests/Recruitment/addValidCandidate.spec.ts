@@ -1,4 +1,4 @@
-import RecruitmentPage from '../../pages/RecruitmentPage';
+import RecruitmentPage from '../../pages/UI/RecruitmentPage';
 import { test, expect } from '../fixtures/auth';
 import { candidateData } from '../../test-mapping/Recruitment_Candidate_Data';
 

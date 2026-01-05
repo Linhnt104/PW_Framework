@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import LoginPage from '../../pages/LoginPage';
+import LoginPage from '../../pages/UI/LoginPage';
 import { validUserData } from '../../test-mapping/Login_Data';
 
 test('login_successfully', async ({page}) => {

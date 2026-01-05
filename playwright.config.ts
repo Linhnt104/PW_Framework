@@ -4,12 +4,12 @@ import { PlaywrightTestConfig } from '@playwright/test';
 const storageStatePath = path.join(__dirname, 'storageState.json');
 
 const config: PlaywrightTestConfig = {
-  // use: {
-  //   baseURL: 'https://opensource-demo.orangehrmlive.com',
-  //   // extraHTTPHeaders: {
-  //   //   Authorization: `Bearer your_access_token`,
-  //   // },
-  // },
+  use: {
+    baseURL: 'https://opensource-demo.orangehrmlive.com',
+    // extraHTTPHeaders: {
+    //   Authorization: `Bearer your_access_token`,
+    // },
+  },
   reporter: [
     ['list'],
     ['json', { outputFile: 'playwright-report.json' }],

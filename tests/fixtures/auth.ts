@@ -1,6 +1,6 @@
 // tests/fixtures/auth.ts
 import { test as base, expect, Page } from '@playwright/test';
-import LoginPage from '../../pages/LoginPage';
+import LoginPage from '../../pages/UI/LoginPage';
 import { validUserData } from '../../test-mapping/Login_Data';
 
 type Fixtures = {
