@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "C:\\Users\\Asus\\Playwright_Framework\\playwright.config.ts",
-    "rootDir": "C:/Users/Asus/Playwright_Framework/tests",
+    "configFile": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/playwright.config.ts",
+    "rootDir": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests",
     "forbidOnly": false,
     "fullyParallel": true,
     "globalSetup": null,
@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 2
     },
     "preserveOutput": "always",
     "reporter": [
@@ -26,7 +26,7 @@
         }
       ],
       [
-        "C:\\Users\\Asus\\Playwright_Framework\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/node_modules/allure-playwright/dist/cjs/index.js",
         {
           "outputFolder": "allure-results"
         }
@@ -39,15 +39,15 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "C:/Users/Asus/Playwright_Framework/test-results",
+        "outputDir": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 1
+          "actualWorkers": 2
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "C:/Users/Asus/Playwright_Framework/tests",
+        "testDir": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -72,6 +72,7 @@
       "specs": [
         {
           "title": "add vacancy with optional fields and full fields successfully",
+          "title": "login with empty account",
           "ok": true,
           "tags": [],
           "tests": [
@@ -97,11 +98,340 @@
                     },
                     {
                       "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/vacancies/14 -> 200\n"
+                  "duration": 12745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-04T11:36:42.616Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca98c9438c93baca1662-c8ef14cc2e0a50785129",
+          "file": "Login/loginEmptyFields.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Login/loginInvalidAccount.spec.ts",
+      "file": "Login/loginInvalidAccount.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "login with invalid account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-04T11:36:42.623Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac9821f2b2ab6561c4e2-90bf63ebfaf2d0665239",
+          "file": "Login/loginInvalidAccount.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Login/loginValidAccount.spec.ts",
+      "file": "Login/loginValidAccount.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "login_successfully",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 9389,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-04T11:36:54.663Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e498afce199bf98f144-bf2cc87891fa8fad10f8",
+          "file": "Login/loginValidAccount.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Recruitment/addRequiredFieldsCandidate.spec.ts",
+      "file": "Recruitment/addRequiredFieldsCandidate.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "add required fields for candidate form",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19378,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('//h6[text()=\\'Application Stage\\']')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('//h6[text()=\\'Application Stage\\']')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('//h6[text()=\\'Application Stage\\']')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('//h6[text()=\\'Application Stage\\']')\u001b[22m\n\n    at RecruitmentPage.addRequiredFieldsCandidate (/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts:180:45)\n    at /Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests/Recruitment/addRequiredFieldsCandidate.spec.ts:7:5",
+                    "location": {
+                      "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                      "column": 45,
+                      "line": 180
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m../pages/UI/RecruitmentPage.ts:180\n\n\u001b[0m \u001b[90m 178 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msaveBtn)\u001b[33m;\u001b[39m\n \u001b[90m 179 |\u001b[39m     \u001b[90m// verify add candidate successfully\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 180 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mapplicationStageText)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 181 |\u001b[39m   }\n \u001b[90m 182 |\u001b[39m   \n \u001b[90m 183 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                        "column": 45,
+                        "line": 180
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('//h6[text()=\\'Application Stage\\']')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('//h6[text()=\\'Application Stage\\']')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m../pages/UI/RecruitmentPage.ts:180\n\n\u001b[0m \u001b[90m 178 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msaveBtn)\u001b[33m;\u001b[39m\n \u001b[90m 179 |\u001b[39m     \u001b[90m// verify add candidate successfully\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 180 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mapplicationStageText)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 181 |\u001b[39m   }\n \u001b[90m 182 |\u001b[39m   \n \u001b[90m 183 |\u001b[39m\u001b[0m\n\u001b[2m    at RecruitmentPage.addRequiredFieldsCandidate (/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts:180:45)\u001b[22m\n\u001b[2m    at /Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests/Recruitment/addRequiredFieldsCandidate.spec.ts:7:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses -> 200\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-01-05T15:51:58.398Z",
+                  "startTime": "2026-01-04T11:36:57.693Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/test-results/Recruitment-addRequiredFie-8a584-d-fields-for-candidate-form-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                    "column": 45,
+                    "line": 180
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "2fc681a32d0e7270cdd1-7ff9ff17f00b1219c6ed",
+          "file": "Recruitment/addRequiredFieldsCandidate.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Recruitment/addRequiredFieldsVacancy.spec.ts",
+      "file": "Recruitment/addRequiredFieldsVacancy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "add vacancy successfully",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 23832,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('//h6[text()=\\'Edit Vacancy\\']')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('//h6[text()=\\'Edit Vacancy\\']')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('//h6[text()=\\'Edit Vacancy\\']')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('//h6[text()=\\'Edit Vacancy\\']')\u001b[22m\n\n    at RecruitmentPage.addVacancyWithRequiredFields (/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts:299:40)\n    at /Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests/Recruitment/addRequiredFieldsVacancy.spec.ts:7:5",
+                    "location": {
+                      "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                      "column": 40,
+                      "line": 299
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m../pages/UI/RecruitmentPage.ts:299\n\n\u001b[0m \u001b[90m 297 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msaveVacancyBtn)\u001b[33m;\u001b[39m\n \u001b[90m 298 |\u001b[39m     \u001b[90m// verify successfully\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 299 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39meditVacancyText)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 300 |\u001b[39m   \u001b[36mreturn\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mRecruitmentPage\u001b[39m(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage)\u001b[33m;\u001b[39m\n \u001b[90m 301 |\u001b[39m   }\n \u001b[90m 302 |\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                        "column": 40,
+                        "line": 299
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('//h6[text()=\\'Edit Vacancy\\']')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('//h6[text()=\\'Edit Vacancy\\']')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m../pages/UI/RecruitmentPage.ts:299\n\n\u001b[0m \u001b[90m 297 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msaveVacancyBtn)\u001b[33m;\u001b[39m\n \u001b[90m 298 |\u001b[39m     \u001b[90m// verify successfully\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 299 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39meditVacancyText)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 300 |\u001b[39m   \u001b[36mreturn\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mRecruitmentPage\u001b[39m(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage)\u001b[33m;\u001b[39m\n \u001b[90m 301 |\u001b[39m   }\n \u001b[90m 302 |\u001b[39m\u001b[0m\n\u001b[2m    at RecruitmentPage.addVacancyWithRequiredFields (/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts:299:40)\u001b[22m\n\u001b[2m    at /Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests/Recruitment/addRequiredFieldsVacancy.spec.ts:7:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses -> 200\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-04T11:37:04.152Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/test-results/Recruitment-addRequiredFie-e9596-cy-add-vacancy-successfully-chromium/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                    "column": 40,
+                    "line": 299
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "131b20c438f593b7f0fb-c30b86d6cacf05cf00d7",
+          "file": "Recruitment/addRequiredFieldsVacancy.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Recruitment/addValidCandidate.spec.ts",
+      "file": "Recruitment/addValidCandidate.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "add candidate with optional fields and full fields successfully",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25915,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses -> 200\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-04T11:37:19.804Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d969d0107e7542b21e37-be88657c69211e402e49",
+          "file": "Recruitment/addValidCandidate.spec.ts",
+          "line": 6,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "Recruitment/addValidVacancy.spec.ts",
+      "file": "Recruitment/addValidVacancy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "add vacancy with optional fields and full fields successfully",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 21395,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses -> 200\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-04T11:37:30.346Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -115,6 +445,81 @@
           "column": 5
         }
       ]
+    },
+    {
+      "title": "Recruitment/searchCandidateBySingleField.spec.ts",
+      "file": "Recruitment/searchCandidateBySingleField.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "search candidate by single field",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30657,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts",
+                        "column": 96,
+                        "line": 216
+                      },
+                      "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('//div[@role=\\'option\\']//span').filter({ hasText: 'Rafi Febrilliant' })\u001b[22m\n\n\n\u001b[90m   at \u001b[39m../pages/UI/RecruitmentPage.ts:216\n\n\u001b[0m \u001b[90m 214 |\u001b[39m     \u001b[90m// search by hiring manager\u001b[39m\n \u001b[90m 215 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msearchSelectHiringManager)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 216 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39moptions)\u001b[33m.\u001b[39mfilter({hasText\u001b[33m:\u001b[39m searchCandidateInfo\u001b[33m.\u001b[39mhiringManager})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 217 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msearchCandidateBtn)\u001b[33m;\u001b[39m\n \u001b[90m 218 |\u001b[39m     \u001b[36mif\u001b[39m(\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mmultipleRecordsFoundText\u001b[33m.\u001b[39misVisible() \u001b[33m||\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msingleRecordFoundText\u001b[33m.\u001b[39misVisible()){\n \u001b[90m 219 |\u001b[39m       \u001b[36mconst\u001b[39m rows \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrowsLocator)\u001b[33m.\u001b[39mall()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at RecruitmentPage.searchCandidateBySingleField (/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/pages/UI/RecruitmentPage.ts:216:96)\u001b[22m\n\u001b[2m    at /Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/tests/Recruitment/searchCandidateBySingleField.spec.ts:9:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "[API watch] urlMatched=true methodOk=true statusOk=true | GET https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/recruitment/candidates/statuses -> 200\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-01-05T15:51:58.398Z",
+                  "startTime": "2026-01-04T11:37:46.946Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/macbookair/Library/Mobile Documents/com~apple~CloudDocs/Workspace/Learning/Playwright/Playwright_emLinh/PW_Framework/test-results/Recruitment-searchCandidat-8d622-h-candidate-by-single-field-chromium/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2bf7674a64b691c682c5-6a478afaabd6d57ec463",
+          "file": "Recruitment/addValidVacancy.spec.ts",
+          "line": 5,
+              "status": "unexpected"
+            }
+          ],
+          "id": "e0fff4d936588609cb5a-2d520618df6e6fcf528e",
+          "file": "Recruitment/searchCandidateBySingleField.spec.ts",
+          "line": 6,
+          "column": 5
+        }
+      ]
     }
   ],
   "errors": [],
@@ -124,6 +529,11 @@
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
+    "startTime": "2026-01-04T11:36:40.754Z",
+    "duration": 97149.568,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 3,
     "flaky": 0
   }
 }

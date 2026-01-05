@@ -12,7 +12,7 @@ export default class ApiBasePage {
     endpointContains: string,
     method: string,
     statusCode: number,
-    timeoutMs = 15_000
+    timeoutMs = 5000
   ): Promise<Response> {
     return await this.page.waitForResponse(
       (res) => {   
